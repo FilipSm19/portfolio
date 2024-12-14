@@ -1,0 +1,6 @@
+dark mode <--------------------------> light mode
+slider, when dark mode text is white and background black,
+when light opposite, in the middle needs to be set accordingly.
+
+green: rgb(173, 255, 152)
+blue: rgba(76, 0, 163, 0.5)
