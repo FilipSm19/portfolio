@@ -49,7 +49,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 body {
@@ -332,9 +332,18 @@ a {
 }
 
 .technologies li:hover {
-    padding: 65px 0 50px 0;
+    padding: 80px 0 50px 0;
     box-shadow: 0px 0px 2px 2px var(--text-color);
     transition: all 0.8s;
+}
+
+.technologies li:hover p {
+    font-size: 1.5rem;
+    transition: all 0.8s;
+}
+
+.technologies li p {
+    transition: all 0.4s;
 }
 
 .technologies li:hover:first-child {
@@ -351,9 +360,18 @@ a {
 }
 
 .skills li:hover {
-    padding: 12% 5%;
+    padding: 12% 0;
     box-shadow: 0px 0px 2px 2px var(--text-color);
     transition: all 1s;
+}
+
+.skills p {
+    transition: all 0.4s;
+}
+
+.skills li:hover p {
+    font-size: 1.3rem;
+    transition: all 0.6s;
 }
 
 .skills li:hover:first-child {
@@ -384,15 +402,31 @@ a {
 }
 
 .six_elements li:hover {
-    padding: 5% 0 16% 0;
+    padding: 5% 0 18% 0;
     box-shadow: 0px 0px 2px 2px var(--text-color);
     transition: all 0.8s;
+}
+
+.six_elements li:hover:first-child {
+    border-radius: 10px 0px 0px 0;
+}
+
+.six_elements li:hover:nth-child(4) {
+    border-radius: 0px 10px 0px 0px;
+}
+
+.six_elements li:hover:nth-child(6) {
+    border-radius: 0px 0px 0px 10px;
+}
+
+.six_elements li:hover:nth-child(9) {
+    border-radius: 0px 0px 10px 0px;
 }
 
 .desc {
     position: absolute;
     font-weight: normal;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
     opacity: 0;
     visibility: hidden;
@@ -417,7 +451,17 @@ a {
 
 .projects li:hover {
     padding: 10% 0 10% 0;
+    box-shadow: 0px 0px 2px 2px var(--text-color);
     transition: all 0.8s;
+}
+
+.projects li:hover:first-child {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.projects li:hover:last-child {
+    border-radius: 0px 10px 10px 0px;
+
 }
 
 .contact li svg {
@@ -532,6 +576,65 @@ a {
 
     .technologies li:hover:last-child {
         border-radius: 0px 0px 10px 10px;
+    }
+
+    .skills li:hover:first-child {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .skills li:hover:last-child {
+        border-radius: 0 0 10px 10px;
+    }
+
+
+    .six_elements li:hover {
+        padding: 8% 0 36% 0;
+        transition: all 0.8s;
+        border-radius: 0 0 0 0;
+    }
+
+    .six_elements li:hover:first-child {
+        border-radius: 10px 0px 0px 0;
+    }
+
+    .six_elements li:hover:nth-child(2) {
+        border-radius: 0px 10px 0px 0;
+    }
+
+    .six_elements li:hover:nth-child(8) {
+        border-radius: 0px 0px 0px 10px;
+    }
+
+    .six_elements li:hover:nth-child(10) {
+        border-radius: 0px 0px 0px 10px;
+    }
+
+
+    .six_elements li:hover .desc {
+        position: absolute;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 1s ease-in;
+
+    }
+
+    .projects li {
+        transition: all 0.4s;
+    }
+
+    .projects li:hover {
+        padding: 10% 0 10% 0;
+        box-shadow: 0px 0px 2px 2px var(--text-color);
+        transition: all 0.8s;
+    }
+
+    .projects li:hover:first-child {
+        border-radius: 10px 10px 0px 10px;
+    }
+
+    .projects li:hover:last-child {
+        border-radius: 0px 0px 10px 10px;
+
     }
 
 
