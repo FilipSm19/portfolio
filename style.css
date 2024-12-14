@@ -601,6 +601,14 @@ a {
         border-radius: 0px 10px 0px 0;
     }
 
+    .six_elements li:hover:nth-child(4) {
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .six_elements li:hover:nth-child(6) {
+        border-radius: 0px 0px 0px 0;
+    }
+
     .six_elements li:hover:nth-child(8) {
         border-radius: 0px 0px 0px 10px;
     }
