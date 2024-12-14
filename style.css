@@ -637,7 +637,7 @@ a {
     }
 
     .projects li:hover:first-child {
-        border-radius: 10px 10px 0px 10px;
+        border-radius: 10px 10px 0px 0px;
     }
 
     .projects li:hover:last-child {
