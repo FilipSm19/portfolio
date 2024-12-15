@@ -21,6 +21,10 @@
 
 
 <body class="dark">
+
+
+    <div id="text1">Welcome to</div>
+    <div id="text2"> my portfolio</div>
     <div class="spinner-wrapper">
         <div class="spinner-border" role="status">
         </div>
@@ -28,7 +32,8 @@
     <header>
         <div class="header">
             My name is <p class="accent">Filip Smojver</p><br>
-            <span class="typewriter"></span>
+            <span class="typewriter">
+            </span>
         </div>
     </header>
     <main>
@@ -61,10 +66,11 @@
         <div class="darkmode">
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="theme-switch">
-                <label class="form-check-label" for="theme-switch">Turn on dark mode?</label>
+                <label class="form-check-label" for="theme-switch">Turn on <span id="label">dark</span>
+                    mode?</label>
             </div>
         </div>
-        <section>
+        <section class="section-six">
             <h1>Programming languages I know</h1>
             <ul class="six_elements row">
                 <li class="col-6 col-md-4"><a href="https://cplusplus.com/doc/tutorial/"><svg
@@ -79,7 +85,8 @@
                                     transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
                             </g>
                         </svg>
-                        <div class="desc">C++ is a cross-platform language that can be used to create high-performance
+                        <div class="desc">C++ is a cross-platform language that can be used to create
+                            high-performance
                             applications.
                         </div>
                     </a>
@@ -149,7 +156,8 @@
                                     transform=" matrix(6.123234e-17 -1 1 6.123234e-17 23.0977 105.0977) " />
                             </g>
                         </svg>
-                        <div class="desc">C# is a general-purpose high-level programming language supporting multiple
+                        <div class="desc">C# is a general-purpose high-level programming language supporting
+                            multiple
                             paradigms.
                         </div>
                     </a>
@@ -256,7 +264,8 @@
                             <path class="b" d="M161.76,357.7H.8L81.25,500.79h161Z" />
                             <path class="c" d="M242.2,214.67l-80.44,143L242.2,500.79,322.71,357.7Z" />
                         </svg>
-                        <div class="desc">A statically-typed curly-braces programming language designed for developing
+                        <div class="desc">A statically-typed curly-braces programming language designed for
+                            developing
                             smart contracts that run on Ethereum.
                         </div>
                     </a>
@@ -324,7 +333,8 @@
                             </g>
                             <title>R</title>
                         </svg>
-                        <div class="desc">R is a programming language for statistical computing and data visualization.
+                        <div class="desc">R is a programming language for statistical computing and data
+                            visualization.
                         </div>
                     </a>
                 </li>
@@ -438,14 +448,14 @@
 
 
                 <li class="col-md-4 ">
-                    <a href="https://github.com/FilipSm19/restoranapp">
+                    <a href="projects.html#restoran">
                         <img src="images/restoran_app.png" alt="Restoran App">
                         <p>Restoran App</p>
                     </a>
                 </li>
                 <li class="col-md-4 row-sm-12">
 
-                    <a href="#">
+                    <a href="projects.html#unihelps">
                         <img src="images/unihelps.png" alt="UniHelps">
                         <p>UniHelps</p>
 
@@ -453,16 +463,20 @@
                 </li>
                 <li class="col-md-4 row-sm-12">
 
-                    <a href="https://github.com/FilipSm19/the-haunting-escape">
+                    <a href="projects.html#he">
                         <img src="images/haunting escape.png" alt="Haunting Escape">
                         <p>The Haunting Escape</p>
 
                     </a>
                 </li>
             </ul>
+
+            <a href="projects.html"> <button type="button" class="btn btn-primary" id="showmore">Show
+                    more</button></a>
         </section>
     </main>
-
+    <section>
+    </section>
     <section class="contact">
 
         <h2>Interested in working together?<br><br><span class="accent">Contact me.</span></h2>

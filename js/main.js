@@ -1,8 +1,10 @@
-
 const div = document.querySelector(".typewriter")
-const text1 = "Welcome to "
-const text2 = "my portfolio."
+const text1 = document.getElementById("text1").innerHTML;
+const text2 = document.getElementById("text2").innerHTML;
 var functionRunning = true;
+
+
+
 function textTypingEffect(element, text, s = 150, i = 0) {
     element.textContent += text[i];
 

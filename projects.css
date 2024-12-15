@@ -1,0 +1,172 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+.header {
+    background: linear-gradient(rgba(44, 0, 94, 0.6),
+            rgba(0, 0, 0, 0.9)), url('images/image2.jpg');
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+
+    transition: all 1s;
+
+}
+
+#header {
+    transition: all 1.2s;
+
+}
+
+header {
+    background: linear-gradient(rgba(44, 0, 94, 0.6),
+            rgba(0, 0, 0, 0.9)), url('images/image2.jpg');
+    background-color: rgb(27, 0, 58);
+    background-position: 150px 0;
+    background-size: 110%;
+    background-repeat: repeat-x;
+}
+
+#pr-darkmode {
+    padding: 0;
+    margin-bottom: -80px;
+}
+
+
+.project {
+    display: flex;
+    flex-direction: row;
+    margin: 0 20% 0 20%;
+    padding: 10% 0 0 0;
+    align-content: center;
+}
+
+.project div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project div:first-child h1 {
+    text-align: start;
+}
+
+.project div:last-child h1 {
+    text-align: end;
+}
+
+.project div p {
+    text-align: justify;
+}
+
+.project div:first-child img {
+    float: left;
+}
+
+.project div:last-child img {
+    float: right;
+}
+
+.project div:last-child button {
+    float: right;
+}
+
+
+.white {
+    background-color: white;
+}
+
+.larger {
+    size: 80%;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.zoom {
+    transition: all 0.5s;
+}
+
+.zoom:hover {
+    padding: 0%;
+    height: 110%;
+    transition: all 0.8s;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    section div a img {
+        display: none
+    }
+
+    .project {
+        flex-direction: row;
+    }
+
+    .project div:first-child h1 {
+        text-align: center;
+    }
+
+    .project div:last-child h1 {
+        text-align: center;
+    }
+
+    .project {
+        margin: 0;
+    }
+
+    .project div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project:last-child {
+        padding-bottom: 50px;
+    }
+
+    .project div p {
+        text-align: left;
+        margin: 0 5%;
+    }
+
+    #pr-darkmode {
+        margin: 0 30px;
+    }
+
+    .btn {
+        margin-top: 40px;
+        margin-bottom: 100px;
+        font-size: 1rem;
+    }
+
+    #home {
+        right: 0;
+        left: auto;
+    }
+
+    header {
+        background: linear-gradient(rgba(44, 0, 94, 0.6),
+                rgba(0, 0, 0, 0.9)), url('images/image2.jpg');
+        background-color: rgb(27, 0, 58);
+        background-position: center 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+}
