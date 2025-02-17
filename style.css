@@ -11,6 +11,10 @@
         0px -1px 100px 60px rgba(29, 0, 61, 0.5);
 }
 
+.hidden {
+    display: none;
+}
+
 .dark {
     --base-color: #0a050e;
     --secondary-color: #120f29;
