@@ -16,8 +16,6 @@ function initClient() {
             apiKey: API_KEY,
             discoveryDocs: DISCOVERY_DOCS
         });
-        loginBtn.classList.add('hidden');
-        logoutBtn.classList.remove('hidden');
         console.log('Google API client initialized.');
     });
 }
@@ -65,4 +63,5 @@ window.onload = () => {
     initClient();
 
     logoutBtn.classList.remove('hidden');
+    loginBtn.classList.remove('hidden');
 };
