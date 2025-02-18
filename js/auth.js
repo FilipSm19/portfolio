@@ -5,7 +5,7 @@ const DISCOVERY_DOCS = ["https://analyticsdata.googleapis.com/$discovery/rest?ve
 const SCOPES = "https://www.googleapis.com/auth/analytics.readonly";
 const CLIENT_ID = '899132251042-lpos5uq6u4dcbu2t4g74ahh3b3p152ku.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyB5haUY3m_iyJ-TdlZNwbDReZ-oMbILhvg';
-const REDIRECT_URI = 'https://github.com/FilipSm19/portfolio/'; // Ensure this matches your Google Cloud Console configuration
+const REDIRECT_URI = 'https://filipsm19.github.io/portfolio/'; // Ensure this matches your Google Cloud Console configuration
 
 let tokenClient;
 
@@ -15,7 +15,7 @@ function initClient() {
         console.log('Google API client initialized.');
         const accessToken = localStorage.getItem('access_token');
         if (accessToken) {
-            gapi.client.setToken({ access_token: accessToken })
+            gapi.client.setToken({ access_token: accessToken });
             loginBtn.classList.add('hidden');
             logoutBtn.classList.remove('hidden');
             await gapi.client.init({
@@ -40,11 +40,13 @@ function handleAuthClick() {
         callback: (response) => {
             if (response.access_token) {
                 localStorage.setItem('access_token', response.access_token);
-                fetchAnalyticsData();
+                initClient()
                 loginBtn.classList.add('hidden');
                 logoutBtn.classList.remove('hidden');
             } else {
                 console.error('Authentication failed.');
+                loginBtn.classList.remove('hidden');
+                logoutBtn.classList.add('hidden');
             }
         },
     });
@@ -68,5 +70,5 @@ function handleSignoutClick() {
 }
 // Load Google API Client on window load
 window.onload = async () => {
-    await initClient();
+    initClient();
 };
