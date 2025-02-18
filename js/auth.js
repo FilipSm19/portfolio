@@ -5,7 +5,7 @@ const DISCOVERY_DOCS = ["https://analyticsdata.googleapis.com/$discovery/rest?ve
 const SCOPES = "https://www.googleapis.com/auth/analytics.readonly";
 const CLIENT_ID = '899132251042-lpos5uq6u4dcbu2t4g74ahh3b3p152ku.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyB5haUY3m_iyJ-TdlZNwbDReZ-oMbILhvg';
-const REDIRECT_URI = 'https://github.com/FilipSm19/portfolio'; // Ensure this matches your Google Cloud Console configuration
+const REDIRECT_URI = 'https://github.com/FilipSm19/portfolio/'; // Ensure this matches your Google Cloud Console configuration
 
 let tokenClient;
 
