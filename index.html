@@ -41,16 +41,15 @@
         </div>
     </header>
     <main>
-        <section><div id="recommendations">
-            <h2>Preporučene stranice</h2>
-            <ul id="recommendations-list"></ul>
-            </div></section>
         <section>
-            <canvas id="chart"></canvas>
-        </section>
-        <section>
+            <h2>Google Analytics</h2>
             <button onclick="handleAuthClick()" id="login" class="btn btn-primary">Sign In</button>
             <button onclick="handleSignoutClick()" id="logout" class="hidden btn btn-primary">Sign Out</button>
+        </section>
+        <section id="charts" class="hidden">
+            <canvas id="chart1"></canvas>
+            <canvas id="chart2"></canvas>
+            <canvas id="chart3"></canvas>
         </section>
         <section>
             <h1>My skills</h1>

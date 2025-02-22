@@ -15,6 +15,10 @@
     display: none;
 }
 
+canvas {
+    margin-bottom: 60px;
+}
+
 .dark {
     --base-color: #0a050e;
     --secondary-color: #120f29;

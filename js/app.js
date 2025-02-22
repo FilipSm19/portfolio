@@ -1,17 +1,18 @@
 function renderChart(data) {
-    const labels = data.rows.map(row => row.dimensionValues[0].value); 
-    const values = data.rows.map(row => parseInt(row.metricValues[0].value));
-  
-    const ctx = document.getElementById('chart').getContext('2d');
+  for (let i = 0; i < 3; i++) {
+    const metricNames = data.metricHeaders.map(header => header.name);
+    const labels = data.rows.map(row => row.dimensionValues[i].value);
+    const values = data.rows.map(row => parseInt(row.metricValues[i].value));
+    const ctx = document.getElementById(`chart${i + 1}`).getContext('2d');
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: labels,
         datasets: [{
-          label: 'Active Users',
+          label: metricNames[i],
           data: values,
-          backgroundColor: 'rgba(244, 244, 35, 0.2)',
-          borderColor: 'rgb(243, 214, 27)',
+          backgroundColor: 'rgb(173, 255, 152)',
+          borderColor: 'rgba(0, 156, 0, 0.5);',
           borderWidth: 1
         }]
       },
@@ -25,3 +26,5 @@ function renderChart(data) {
       }
     });
   }
+
+}
