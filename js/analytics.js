@@ -7,8 +7,6 @@ async function fetchAnalyticsData() {
       dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
       dimensions: [
         { name: "country" },
-        { name: "city" },
-        { name: "deviceCategory" },
       ],
       metrics: [
         { name: "activeUsers" },

@@ -1,7 +1,7 @@
 function renderChart(data) {
   for (let i = 0; i < 3; i++) {
     const metricNames = data.metricHeaders.map(header => header.name);
-    const labels = data.rows.map(row => row.dimensionValues[i].value);
+    const labels = data.rows.map(row => row.dimensionValues[0].value);
     const values = data.rows.map(row => parseInt(row.metricValues[i].value));
     const ctx = document.getElementById(`chart${i + 1}`).getContext('2d');
     new Chart(ctx, {
