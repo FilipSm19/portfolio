@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -34,7 +33,7 @@ export default function Contact({ email = 'filip.smojver19@gmail.com' }) {
                 <button
                     onClick={handleCopy}
                     type="button"
-                    className={["duration-200 cursor-pointer", copied ? "text-teal-600  border-teal-900" : "hover:text-teal-300 border-taupe-900"].join(" ")}
+                    className={["duration-200 cursor-pointer", copied ? "text-muted" : "hover:text-hover"].join(" ")}
                     title="Copy email to clipboard">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

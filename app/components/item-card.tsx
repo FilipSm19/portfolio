@@ -1,23 +1,28 @@
 export default function ItemSectionCard({
     title,
+    subtitle,
     children,
-    className = "",
+    className,
     classNameList = "",
 }: {
     title: string;
+    subtitle?: string;
     children: React.ReactNode;
     className?: string;
     classNameList?: string;
 }) {
 
     return (
-        <li className={'hover:text-teal-500 select-none transition-colors ease-in-out duration-600 ${className} ' + className}>
-            <div className="flex items-center gap-2.5 whitespace-pre-line">
+        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden ' + className}>
+            <div className="item-card-title flex items-center gap-2.5 whitespace-pre-line px-2">
                 {title}
             </div>
-            <div className="text-white leading-relaxed overflow-hidden">
-                <div className='ml-5 mt-2.5 text-white '>
-                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-taupe-500 marker:font-mono not-hover:text-taupe-300 " + classNameList}>{children}
+            {subtitle && <div className="flex items-center gap-2.5 whitespace-pre-line px-2 mt-1 text-secondary">
+                {subtitle}
+            </div>}
+            <div className="leading-relaxed overflow-hidden">
+                <div className='ml-5 my-2.5 px-2'>
+                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-marker marker:font-mono text-foreground_muted group-hover/item:text-foreground " + classNameList}>{children}
                     </ul>
                 </div>
             </div>

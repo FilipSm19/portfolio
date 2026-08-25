@@ -14,34 +14,32 @@ export default function ItemSectionCard({
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <li className={'hover:text-teal-500 select-none ' + className} onClick={() => setIsOpen(!isOpen)}>
+        <li className={'select-none rounded-sm overflow-hidden group/item ' + className} onClick={() => setIsOpen(!isOpen)}>
 
-            <div className="flex items-center gap-2.5 cursor-pointer">
+            <div className={`flex items-center gap-2.5 cursor-pointer w-full px-3 item-card-title ${isOpen && "bg-badge"}`}>
                 <motion.span
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className={`w-1.25 h-1.25 shrink-0 ${isOpen ? "bg-teal-500" : "bg-current"
-                        }`}
+                    className={`w-1 h-1 scale-150 mr-1 shrink-0 ${isOpen ? "bg-primary" : "bg-current group-hover/item:bg-primary"}`}
                 />
-                <span className={isOpen ? "text-teal-500 " : ""}>
+                <span className={`group-hover/item:text-primary ${isOpen && "text-badge_text"}`}>
                     {title}
                 </span>
             </div>
             <AnimatePresence initial={false}>
                 {isOpen && (
                     <motion.div
-                        className="text-white leading-relaxed overflow-hidden"
+                        className="text-foreground bg-background px-2 pb-2.5 leading-relaxed overflow-hidden"
                         key="content"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                        <div className='ml-5 mt-2.5 text-white'>
-                            <ul className="flex flex-col gap-2 tracking-wider list-['-_'] marker:text-teal-500 marker:font-mono">{children}
+                        <div className='ml-5 mt-2.5 text-foreground'>
+                            <ul className="flex flex-col gap-2 tracking-wider list-['-_'] marker:text-primary marker:font-mono">{children}
                             </ul>
                         </div>
-
 
                     </motion.div>
                 )}
