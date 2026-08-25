@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function ThemeSwitch() {
     const [mounted, setMounted] = useState(false);
-    const { theme, setTheme } = useTheme();
+    const { theme, resolvedTheme, setTheme } = useTheme();
     const [translateY, setTranslateY] = useState(0);
     const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -35,16 +35,23 @@ export default function ThemeSwitch() {
         }
     }, [])
 
-    if (!mounted) return;
+    if (!mounted) {
+        return (
+            <div className="absolute sm:fixed top-15 sm:bottom-5 sm:top-auto right-2 w-8 h-8 sm:w-10 sm:h-10 border-border sm:border rounded-md opacity-0 z-50 pointer-events-none" />
+        );
+    }
 
-    return <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    const currentTheme = theme === 'system' ? resolvedTheme : theme;
+    const isDark = currentTheme === 'dark';
+
+    return <button onClick={() => setTheme(isDark ? 'light' : 'dark')}
         style={{
             transform: `translateY(${translateY}px)`,
             transition: translateY === 0
                 ? 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) colors 0.2s'
                 : 'all 0.3s ease-out',
 
-        }} className='absolute sm:fixed top-15 sm:bottom-5 sm:top-auto right-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center sm:bg-bg_text rounded-md text-secondary hover:text-opposite-fg border-border hover:border-opposite-fg hover:bg-opposite-bg sm:border'>{theme === 'dark' ? <SunIcon /> : <MoonIcon />}</button>;
+        }} className='absolute sm:fixed top-15 sm:bottom-5 sm:top-auto right-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center sm:bg-bg_text rounded-md text-secondary hover:text-opposite-fg border-border hover:border-opposite-fg hover:bg-opposite-bg sm:border' aria-label="Toggle Theme">{isDark ? <SunIcon /> : <MoonIcon />}</button>;
 }
 
 
