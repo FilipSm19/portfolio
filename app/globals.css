@@ -1,22 +1,86 @@
 @import "tailwindcss";
 
 :root { 
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0c0a09;
+    --foreground: #ededed;  
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-foreground_muted: var(--foreground_muted);
+  --color-border: var(--border);
+  --color-bg_text: var(--bg_text);
+  --color-primary: var(--primary);
+  --color-hover: var(--hover);
+  --color-secondary: var(--secondary); 
+  --color-muted: var(--muted);
+  --color-marker: var(--marker);
+  --color-badge: var(--badge);
+  --color-badge_text: var(--badge_text);
+  --color-navbar: var(--navbar);
+
+  --color-opposite-bg: var(--opposite-bg);
+  --color-opposite-fg: var(--opposite-fg);
+
   --font-sans: var(--font-plus-jakarta);
   --font-mono: var(--font-jetbrains-mono);
+
+
 }
 
-/*@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
+.dark{ 
+    --background: #0c0a09; /* taupe-950 */
     --foreground: #ededed;
-  }
+    --foreground_muted: #d8d2d0;
+    --border: #2b2422;    /* taupe-800 */
+    --bg_text: #000000;
+    --primary: #2dd4bf;  
+    --hover: #2dd4bf;  
+    --secondary: #aba09c; /* taupe-400 */ 
+    --muted: #5b4f4b;  
+    --marker: #7c6d67; 
+    --badge: #171717;
+    --badge_text: var(--color-secondary);
+    --navbar:  var(--color-background);
+
+    --opposite-bg: #f3f1f3;
+    --opposite-fg: #334155;  
+} 
+
+.light{ 
+    --background: #f3f1f3; 
+    --foreground: #000000 ;
+    --foreground_muted: #475569;
+    --border: #334155;    /* taupe-800 */
+    --bg_text: #fafafa;
+    --primary: #2dd4bf;  
+    --hover: #14b8a6;  
+    --secondary: #334155; /* taupe-400 */ 
+    --muted: #5b4f4b;  
+    --marker: #334155; 
+    --badge: #334155;
+    --badge_text: #cbd5e1;
+    --navbar:  #334155;   
+
+    --opposite-bg: #000000;
+    --opposite-fg: #2dd4bf;  
+} 
+
+/*.light{ 
+    --background: #1d1816;   
+    --foreground: #ffffff;      
+    --foreground_muted: #e5e5e5;
+    --border: #7c6d67;      
+    --bg_text: #473c39;
+    --primary: #14b8a6;  
+    --hover: #2dd4bf;  
+    --secondary: #ccc6c4;  
+    --muted: #7c6d67;  
+    --marker: #aba09c; 
+    --badge: #1d1816;
+    --badge_text: var(--color-secondary);
+    --navbar: #1d1816;  
 }*/
 
 body {
@@ -25,19 +89,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-li, a, span, button{
-  @apply transition-colors ease-in-out duration-400;
+@layer base{  
+  li, a, span, button{
+    @apply transition-colors ease-in-out duration-400;
+  }
+
+  a{
+    @apply hover:text-hover 
+  } 
 }
 
-a{
-  @apply hover:text-teal-500
-}
- 
-@layer base{
+@layer components{  
   .badge{
-    @apply uppercase bg-neutral-900 p-1 pl-2 rounded-md tracking-[0.25em] font-mono border-taupe-800;
+    @apply uppercase bg-badge text-badge_text p-1 pl-2 rounded-md tracking-[0.25em] font-mono border-border;
   }
   .btn{
-    @apply px-2.5 py-1 bg-neutral-900 border border-taupe-800 text-taupe-300 hover:text-teal-500 hover:border-teal-800 rounded-sm text-[0.8rem] tracking-widest font-mono cursor-pointer 
-  }
+    @apply px-2.5 py-1 bg-badge border border-border text-badge_text hover:text-primary rounded-sm text-[0.8rem] tracking-widest font-mono cursor-pointer 
+  }  
+  
+  #navbar a{
+    @apply text-badge_text hover:text-primary
+  }  
+  
+  .item-card-title{
+    @apply p-0.5 px-1.5 transition-all ease-in-out duration-600;
+  } 
+
+  .group\/item:hover .item-card-title{
+    @apply sm:bg-badge sm:text-badge_text;
+  }   
 }
