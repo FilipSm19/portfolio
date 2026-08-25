@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Filip Smojver - Software Dev",
-  description: "Portfolio built with Next.js and Tailwind CSS",
+  title: "Filip Smojver | Software Developer",
+  description: "Explore my portfolio showcasing full-stack applications, technical projects, and past software development experience.",
 };
 
 export default function RootLayout({
