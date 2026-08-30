@@ -41,8 +41,8 @@
     --muted: #5b4f4b;  
     --marker: #7c6d67; 
     --badge: #171717;
-    --badge_text: var(--color-secondary);
-    --navbar:  var(--color-background);
+    --badge_text: var(--secondary);
+    --navbar: var(--background);
 
     --opposite-bg: #f3f1f3;
     --opposite-fg: #334155;  

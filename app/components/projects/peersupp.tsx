@@ -1,4 +1,4 @@
-import BtnLink from "../btnLink";
+import BtnLink from "../btn-link";
 
 
 export default function PeerSupp() {
@@ -15,7 +15,7 @@ export default function PeerSupp() {
         <li>
             Built user, chat, admin, and mentor interfaces.
         </li>
-        <div className='flex flex-row gap-4 items-center justify-start mt-2'>
+        <div className='flex flex-row gap-4 items-center justify-start mt-2 pb-2.5'>
             <BtnLink title='GitHub' url='https://github.com/FilipSm19/pi_app' />
         </div>
     </>;

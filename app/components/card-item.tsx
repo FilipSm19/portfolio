@@ -1,4 +1,4 @@
-export default function ItemSectionCard({
+export default function CardItem({
     title,
     subtitle,
     children,

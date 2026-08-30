@@ -1,4 +1,4 @@
-import BtnLink from "../btnLink";
+import BtnLink from "../btn-link";
 
 
 export default function HauntEsc() {
@@ -18,7 +18,7 @@ export default function HauntEsc() {
         <li>
             Created music and sound effects
         </li>
-        <div className='flex flex-row gap-4 items-center justify-start mt-2'>
+        <div className='flex flex-row gap-4 items-center justify-start mt-2 pb-2.5'>
             <BtnLink title='GitHub' url='https://github.com/FilipSm19/the-haunting-escape' />
         </div>
     </>;

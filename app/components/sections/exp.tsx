@@ -1,11 +1,17 @@
-import ExpItem from "./item-card";
+import ExpItem from "../card-item";
 
 export default function Exp() {
     return <div>
-        <ul className='flex flex-col sm:flex-row flex-wrap gap-10 tracking-wider'>
-            <ExpItem title={'FULL-STACK DEVELOPER - AppScaled (sole proprietorship)\n[April 2026. - Currently]'}><AppScaled /></ExpItem>
-            <ExpItem title={'WEB DEVELOPER - NetCom d.o.o.\n[March 2026. - April 2026.]'}><NetCom /></ExpItem>
-            <ExpItem title={'WEB DEVELOPER - Nekretnine1 j.d.o.o.\n[November 2024. - October 2025.]'}><Nekretnine1 /></ExpItem>
+        <ul className='flex flex-col sm:flex-row flex-wrap gap-5 tracking-wider'>
+            <ExpItem title={'FULL-STACK DEVELOPER - AppScaled (sole proprietorship)\n[April 2026. - Currently]'}>
+                <AppScaled />
+            </ExpItem>
+            <ExpItem title={'WEB DEVELOPER - NetCom d.o.o.\n[March 2026. - April 2026.]'}>
+                <NetCom />
+            </ExpItem>
+            <ExpItem title={'WEB DEVELOPER - Nekretnine1 j.d.o.o.\n[November 2024. - October 2025.]'}>
+                <Nekretnine1 />
+            </ExpItem>
         </ul>
     </div>;
 }

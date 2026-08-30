@@ -1,4 +1,4 @@
-import BtnLink from "../btnLink";
+import BtnLink from "../btn-link";
 
 export default function PMS() {
     return <>
@@ -14,7 +14,7 @@ export default function PMS() {
         <li>
             Integrated with PostgreSQL database and managed credentials.
         </li>
-        <div className='flex flex-row gap-4 items-center justify-start mt-2'>
+        <div className='flex flex-row gap-4 items-center justify-start mt-2 pb-2.5'>
             <BtnLink title='PDF' url='https://zir.nsk.hr/object/infri:1460/FILE0' />
         </div>
     </>;

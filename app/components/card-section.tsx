@@ -1,12 +1,12 @@
 import React from "react";
 
-interface SectionCardProps {
+interface CardSectionProps {
     title: string;
     id?: string;
     children: React.ReactNode;
 }
 
-export default function SectionCard({ title, id, children }: SectionCardProps) {
+export default function CardSection({ title, id, children }: CardSectionProps) {
     return (
         <div className="w-full scroll-mt-20 group" id={id}>
             <span className="badge border border-border border-b-0 text-sm rounded-b-none pb-0.5 select-none group-hover:text-primary">

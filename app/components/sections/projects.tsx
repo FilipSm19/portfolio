@@ -1,9 +1,9 @@
 "use client";
-import PMS from "./projects/pms";
-import PeerSupp from "./projects/peersupp";
-import HauntEsc from "./projects/hauntesc";
-import Restaurant from "./projects/restaurant";
-import ProjectItem from "./interact-item-card";
+import PMS from "../projects/pms";
+import PeerSupp from "../projects/peersupp";
+import HauntEsc from "../projects/hauntesc";
+import Restaurant from "../projects/restaurant";
+import ProjectItem from "../card-item-interactive";
 
 export default function Projects() {
     return <div>

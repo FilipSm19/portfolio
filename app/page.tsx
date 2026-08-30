@@ -1,8 +1,8 @@
-import Projects from "./components/projects";
-import SectionCard from "./components/section-card";
-import Skills from "./components/skills";
-import Exp from "./components/exp";
-import Contact from "./components/contact";
+import Projects from "./components/sections/projects";
+import SectionCard from "./components/card-section";
+import Skills from "./components/sections/skills";
+import Exp from "./components/sections/exp";
+import Contact from "./components/sections/contact";
 import ThemeSwitch from "./components/themeSwitch";
 
 export default function Home() {

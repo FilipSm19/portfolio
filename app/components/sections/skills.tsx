@@ -1,4 +1,4 @@
-import SkillItem from "./item-card";
+import SkillItem from "../card-item";
 
 export default function Skills() {
     return <div>
@@ -10,7 +10,6 @@ export default function Skills() {
                 <SkillItem title='Databases'><Databases /></SkillItem>
                 <SkillItem title='Other'><Other /></SkillItem>
             </ul>
-
         </ul>
     </div>;
 }
