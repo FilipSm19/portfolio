@@ -3,7 +3,7 @@ import ExpItem from "../card-item";
 export default function Exp() {
     return <div>
         <ul className='flex flex-col sm:flex-row flex-wrap gap-5 tracking-wider'>
-            <ExpItem title={'FULL-STACK DEVELOPER - AppScaled (sole proprietorship)\n[April 2026. - Currently]'}>
+            <ExpItem title={'FULL-STACK DEVELOPER - AppScaled (sole proprietorship)\n[April 2026. - August 2026.]'}>
                 <AppScaled />
             </ExpItem>
             <ExpItem title={'WEB DEVELOPER - NetCom d.o.o.\n[March 2026. - April 2026.]'}>
