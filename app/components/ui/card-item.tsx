@@ -13,7 +13,7 @@ export default function CardItem({
 }) {
 
     return (
-        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden text-justify ' + className}>
+        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden ' + className}>
             <div className="item-card-title font-bold flex items-center gap-2.5 whitespace-pre-line px-2">
                 {title}
             </div>
@@ -22,7 +22,7 @@ export default function CardItem({
             </div>}
             <div className="leading-relaxed overflow-hidden">
                 <div className='ml-5 my-2.5 px-2'>
-                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-marker marker:font-mono text-foreground_muted group-hover/item:text-foreground " + classNameList}>{children}
+                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-marker marker:font-mono text-foreground_muted group-hover/item:text-foreground text-justify " + classNameList}>{children}
                     </ul>
                 </div>
             </div>
