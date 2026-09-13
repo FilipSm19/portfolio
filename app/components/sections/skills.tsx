@@ -1,15 +1,12 @@
-import SkillItem from "../card-item";
+import SkillItem from "../ui/card-item";
 
 export default function Skills() {
     return <div>
         <ul className='flex flex-col sm:flex-row flex-wrap gap-5 tracking-wider'>
             <SkillItem title='Application Development' className='sm:w-[calc(50%-10px)]'><AppDev /></SkillItem>
+            <SkillItem title='Databases' className='sm:w-[calc(50%-10px)]'><Databases /></SkillItem>
             <SkillItem title='Web Development' className='sm:w-[calc(50%-10px)]'><WebDev /></SkillItem>
-            <SkillItem title='Programming Languages' className='sm:w-[calc(50%-10px)]' classNameList="sm:gap-2.5"><ProgLang /></SkillItem>
-            <ul className='sm:w-[calc(50%-10px)] flex flex-col gap-5'>
-                <SkillItem title='Databases'><Databases /></SkillItem>
-                <SkillItem title='Other'><Other /></SkillItem>
-            </ul>
+            <SkillItem title='Programming Languages' className='sm:w-[calc(50%-10px)]'><ProgLang /></SkillItem>
         </ul>
     </div>;
 }
@@ -19,9 +16,6 @@ function AppDev() {
     return <>
         <li>
             Flutter
-        </li>
-        <li>
-            Firebase
         </li>
         <li>
             .NET MAUI
@@ -54,42 +48,18 @@ function ProgLang({
             C#
         </li>
         <li>
-            C++
-        </li>
-        <li>
             Python
         </li>
-        <li>
-            TypeScript
-        </li>
-        <li>
-            JavaScript
-        </li>
-
     </>;
 }
 
 function Databases() {
     return <>
         <li>
-            Firebase
+            Cloud Firestore
         </li>
         <li>
             PostgreSQL
-        </li>
-        <li>
-            MongoDB
-        </li>
-    </>;
-}
-
-function Other() {
-    return <>
-        <li>
-            Git
-        </li>
-        <li>
-            GIMP
         </li>
     </>;
 }

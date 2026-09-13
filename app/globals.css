@@ -16,9 +16,14 @@
   --color-secondary: var(--secondary); 
   --color-muted: var(--muted);
   --color-marker: var(--marker);
+
   --color-badge: var(--badge);
   --color-badge_text: var(--badge_text);
+
   --color-navbar: var(--navbar);
+
+  --color-highlight: var(--highlight);
+  --color-highlight_text: var(--highlight_text);
 
   --color-opposite-bg: var(--opposite-bg);
   --color-opposite-fg: var(--opposite-fg);
@@ -30,38 +35,48 @@
 }
 
 .dark{ 
-    --background: #0c0a09; /* taupe-950 */
+    --background: #0c0a09; /* taupe */
     --foreground: #ededed;
     --foreground_muted: #d8d2d0;
-    --border: #2b2422;    /* taupe-800 */
+    --border: #2b2422;    /* taupe */
     --bg_text: #000000;
     --primary: #2dd4bf;  
     --hover: #2dd4bf;  
-    --secondary: #aba09c; /* taupe-400 */ 
+    --secondary: #aba09c; /* taupe */ 
     --muted: #5b4f4b;  
     --marker: #7c6d67; 
+
     --badge: #171717;
     --badge_text: var(--secondary);
+
     --navbar: var(--background);
+    
+    --highlight: var(--badge);
+    --highlight_text: var(--primary);
 
     --opposite-bg: #f3f1f3;
-    --opposite-fg: #334155;  
+    --opposite-fg: #171717;  
 } 
 
 .light{ 
     --background: #f3f1f3; 
-    --foreground: #000000 ;
-    --foreground_muted: #475569;
-    --border: #334155;    /* taupe-800 */
+    --foreground: #020617 ;
+    --foreground_muted: #5d514d;
+    --border: #2b2422;  
     --bg_text: #fafafa;
     --primary: #2dd4bf;  
     --hover: #14b8a6;  
-    --secondary: #334155; /* taupe-400 */ 
+    --secondary: #262626; 
     --muted: #5b4f4b;  
-    --marker: #334155; 
-    --badge: #334155;
-    --badge_text: #cbd5e1;
-    --navbar:  #334155;   
+    --marker: #5b4f4b; 
+
+    --badge: #262626;
+    --badge_text: #d8d2d0;
+
+    --navbar:  #262626;   
+
+    --highlight: #ccfbf1;
+    --highlight_text: #000000;
 
     --opposite-bg: #000000;
     --opposite-fg: #2dd4bf;  
@@ -118,4 +133,16 @@ body {
   .group\/item:hover .item-card-title{
     @apply sm:bg-badge sm:text-badge_text;
   }   
+
+  .highlight{
+    @apply group-hover/item:bg-highlight
+           group-hover/item:text-highlight_text  
+           group-hover/item:border-border
+           transition-all
+           px-0.5
+           pb-0.5
+           rounded-md
+           font-medium
+           text-foreground;
+  }
 }

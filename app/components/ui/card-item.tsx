@@ -13,8 +13,8 @@ export default function CardItem({
 }) {
 
     return (
-        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden ' + className}>
-            <div className="item-card-title flex items-center gap-2.5 whitespace-pre-line px-2">
+        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden text-justify ' + className}>
+            <div className="item-card-title font-bold flex items-center gap-2.5 whitespace-pre-line px-2">
                 {title}
             </div>
             {subtitle && <div className="flex items-center gap-2.5 whitespace-pre-line px-2 mt-1 text-secondary">

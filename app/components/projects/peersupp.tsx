@@ -1,4 +1,4 @@
-import BtnLink from "../btn-link";
+import BtnLink from "../ui/btn-link";
 
 
 export default function PeerSupp() {

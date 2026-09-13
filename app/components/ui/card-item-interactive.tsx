@@ -22,7 +22,7 @@ export default function CardItemInteractive({
                     transition={{ duration: 0.2 }}
                     className={`w-1 h-1 scale-150 mr-1 shrink-0 ${isOpen ? "bg-primary" : "bg-current group-hover/item:bg-primary"}`}
                 />
-                <span className={`group-hover/item:text-primary border-b border-muted group-hover/item:border-b-current ${isOpen && "text-badge_text border-b-transparent group-hover/item:border-b-transparent"}`}>
+                <span className={`group-hover/item:text-primary sm:border-b group-hover/item:border-b-transparent  ${isOpen ? "no-underline text-primary sm:text-badge_text border-b-transparent" : "underline decoration-0 underline-offset-3 sm:no-underline border-muted "}`}>
                     {title}
                 </span>
             </div>

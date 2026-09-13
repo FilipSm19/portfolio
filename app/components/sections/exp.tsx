@@ -1,4 +1,4 @@
-import ExpItem from "../card-item";
+import ExpItem from "../ui/card-item";
 
 export default function Exp() {
     return <div>
