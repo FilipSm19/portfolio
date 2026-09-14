@@ -37,8 +37,8 @@ const SCROLL_LERP_FACTOR = 0.035;
 // Parallax drift speed range per diamond group, as a fraction of scroll
 // distance. Lowered from the original [0.2, 0.55] to [0.07, 0.25] so
 // diamonds drift noticeably slower relative to how far you scroll.
-const PARALLAX_SPEED_MIN = 0.07;
-const PARALLAX_SPEED_RANGE = 0.18;
+const PARALLAX_SPEED_MIN = 0.17;
+const PARALLAX_SPEED_RANGE = 0.28;
 // Speed of the scroll-driven sine "breathing" (line-length pulses and
 // gradient shifts). Lowered so breathing feels calmer while scrolling.
 const SCROLL_WAVE_SPEED = 0.0011;
@@ -408,7 +408,7 @@ export default function TechMatrixBg() {
     return (
         <canvas
             ref={canvasRef}
-            className="pointer-events-none absolute inset-0 h-full w-full opacity-70"
+            className="pointer-events-none absolute inset-0 h-full w-full opacity-60"
         />
     );
 }

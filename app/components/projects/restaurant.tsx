@@ -3,6 +3,9 @@ import BtnLink from "../ui/btn-link";
 export default function Restaurant() {
     return <>
         <li>
+            Bachelor's Thesis
+        </li>
+        <li>
             Flutter Project
         </li>
         <li>
@@ -10,9 +13,6 @@ export default function Restaurant() {
         </li>
         <li>
             Integrated with the Cloud Firebase
-        </li>
-        <li>
-            Bachelor's Thesis
         </li>
         <div className='flex flex-row gap-4 items-center justify-start mt-2 pb-2.5'>
             <BtnLink title="GitHub" url='https://github.com/FilipSm19/restoranapp' />

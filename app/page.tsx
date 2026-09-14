@@ -9,7 +9,7 @@ import TechMatrixBg from "./components/techmatrix";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center font-sans bg-background relative">
-      <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block">
+      <div className="fixed inset-0 z-0 pointer-events-none hidden sm:block">
         <TechMatrixBg />
       </div>
       <ThemeSwitch />
