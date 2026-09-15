@@ -129,20 +129,29 @@ body {
   .item-card-title{
     @apply p-0.5 px-1.5 transition-all ease-in-out duration-600;
   } 
+  
+  @media (hover: hover) and (pointer: fine) {
+    .group\/item:hover .item-card-title {
+      @apply bg-badge text-badge_text;
+    }
+  }
 
-  .group\/item:hover .item-card-title{
-    @apply sm:bg-badge sm:text-badge_text;
-  }   
+  .group\/item[data-active="true"] .item-card-title {
+    @apply bg-badge text-badge_text;
+  }
 
-  .highlight{
+  .highlight {
     @apply group-hover/item:bg-highlight
-           group-hover/item:text-highlight_text  
-           group-hover/item:border-border
-           transition-all
-           px-0.5
-           pb-0.5
-           rounded-md
-           font-medium
-           text-foreground;
+          group-hover/item:text-highlight_text
+          group-hover/item:border-border
+          group-data-[active=true]/item:bg-highlight
+          group-data-[active=true]/item:text-highlight_text
+          group-data-[active=true]/item:border-border
+          transition-all
+          px-0.5
+          pb-0.5
+          rounded-md
+          font-medium
+          text-foreground;
   }
 }

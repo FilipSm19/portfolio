@@ -4,7 +4,7 @@ import Skills from "./components/sections/skills";
 import Exp from "./components/sections/exp";
 import Contact from "./components/sections/contact";
 import ThemeSwitch from "./components/ui/themeSwitch";
-import TechMatrixBg from "./components/techmatrix";
+import TechMatrixBg from "./components/ui/techmatrix";
 
 export default function Home() {
   return (

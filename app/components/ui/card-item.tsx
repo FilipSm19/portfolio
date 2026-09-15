@@ -1,3 +1,7 @@
+"use client";
+
+import { useActiveObserver } from "../observer";
+
 export default function CardItem({
     title,
     subtitle,
@@ -11,9 +15,17 @@ export default function CardItem({
     className?: string;
     classNameList?: string;
 }) {
+    const { elementRef, isActive } = useActiveObserver<HTMLLIElement>();
 
     return (
-        <li className={'select-none group/item sm:hover:bg-background w-full rounded-sm overflow-hidden ' + className}>
+        <li
+            ref={elementRef}
+            data-active={isActive}
+            className={
+                'select-none group/item w-full rounded-sm overflow-hidden transition-colors hover:bg-background group-data-[active=true]/item:bg-background ' +
+                className
+            }
+        >
             <div className="item-card-title font-bold flex items-center gap-2.5 whitespace-pre-line px-2">
                 {title}
             </div>
@@ -22,7 +34,7 @@ export default function CardItem({
             </div>}
             <div className="leading-relaxed overflow-hidden">
                 <div className='ml-5 my-2.5 px-2'>
-                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-marker marker:font-mono text-foreground_muted group-hover/item:text-foreground " + classNameList}>{children}
+                    <ul className={"flex flex-col gap-2 tracking-wider list-['-_'] marker:text-marker marker:font-mono text-foreground_muted transition-colors group-hover/item:text-foreground group-data-[active=true]/item:text-foreground " + classNameList}>{children}
                     </ul>
                 </div>
             </div>
