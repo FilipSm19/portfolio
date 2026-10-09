@@ -22,7 +22,7 @@ export default function CardItem({
             ref={elementRef}
             data-active={isActive}
             className={
-                'select-none group/item w-full rounded-sm overflow-hidden transition-colors hover:bg-background group-data-[active=true]/item:bg-background ' +
+                'select-none group/item w-full rounded-sm overflow-hidden transition-colors hover:bg-background data-[active=true]:bg-background ' +
                 className
             }
         >
