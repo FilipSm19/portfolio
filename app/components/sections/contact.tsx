@@ -7,18 +7,9 @@ export default function Contact({ email = 'filip.smojver19@gmail.com' }) {
 
     const handleCopy = async () => {
         try {
-            if (navigator?.clipboard?.writeText) {
-                await navigator.clipboard.writeText(email);
-            } else {
-                const textarea = document.createElement("textarea");
-                textarea.value = email;
-                textarea.style.position = "fixed";
-                textarea.style.opacity = "0";
-                document.body.appendChild(textarea);
-                textarea.focus();
-                textarea.select();
-                document.body.removeChild(textarea);
-            }
+            if (!navigator?.clipboard?.writeText)
+                throw new Error("Clipboard API not supported in this insecure context");
+
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         } catch (err) {
@@ -31,6 +22,7 @@ export default function Contact({ email = 'filip.smojver19@gmail.com' }) {
             <div className='flex flex-row items-center gap-1'>
                 <a href={'mailto:' + email}>Email</a>
                 <button
+                    aria-label='Copy email to clipboard'
                     onClick={handleCopy}
                     type="button"
                     className={["duration-200 cursor-pointer", copied ? "text-muted" : "hover:text-hover"].join(" ")}
