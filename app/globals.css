@@ -5,98 +5,88 @@
     --foreground: #ededed;  
 }
 
-@theme inline {
+@theme inline {  
+  /* Font Variables*/
+  --font-sans: var(--font-plus-jakarta);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Color Variables*/
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground_muted: var(--foreground_muted);
+  --color-opposite-bg: var(--opposite-bg);
+  --color-opposite-fg: var(--opposite-fg);
+  --color-bg_text: var(--bg_text); 
+  
+  --color-navbar: var(--navbar);
+
   --color-border: var(--border);
-  --color-bg_text: var(--bg_text);
-  --color-primary: var(--primary);
-  --color-hover: var(--hover);
+  --color-outer_border: var(--outer_border);
+ 
+  --color-primary: var(--primary); 
   --color-secondary: var(--secondary); 
+  --color-hover: var(--hover);
   --color-muted: var(--muted);
   --color-marker: var(--marker);
 
   --color-badge: var(--badge);
   --color-badge_text: var(--badge_text);
-
-  --color-navbar: var(--navbar);
-
   --color-highlight: var(--highlight);
   --color-highlight_text: var(--highlight_text);
 
-  --color-opposite-bg: var(--opposite-bg);
-  --color-opposite-fg: var(--opposite-fg);
-
-  --font-sans: var(--font-plus-jakarta);
-  --font-mono: var(--font-jetbrains-mono);
-
-
 }
 
+/* Dark Mode Colors */
 .dark{ 
-    --background: #0c0a09; /* taupe */
+    --background: #0c0a09;  
     --foreground: #ededed;
-    --foreground_muted: #d8d2d0;
-    --border: #2b2422;    /* taupe */
-    --bg_text: #000000;
-    --primary: #2dd4bf;  
+    --foreground_muted: #d8d2d0; 
+    --opposite-bg: #f3f1f3;
+    --opposite-fg: #171717;  
+    --bg_text: #000000;  
+
+    --navbar: var(--background);
+
+    --border: #2b2422;     
+    --outer_border: var(--border);     
+
+    --primary: #2dd4bf;   
+    --secondary: #aba09c;  
     --hover: #2dd4bf;  
-    --secondary: #aba09c; /* taupe */ 
     --muted: #5b4f4b;  
     --marker: #7c6d67; 
 
     --badge: #171717;
-    --badge_text: var(--secondary);
-
-    --navbar: var(--background);
-    
+    --badge_text: var(--secondary); 
     --highlight: var(--badge);
     --highlight_text: var(--primary);
-
-    --opposite-bg: #f3f1f3;
-    --opposite-fg: #171717;  
 } 
 
-.light{ 
-    --background: #f5f2ef;        /* warm stone, was neutral #f3f1f3 */
-    --foreground: #1c1917;        /* warm near-black, was cool navy #020617 */
-    --foreground_muted: #6b5d58;  /* warm mid-brown-gray */
-    --border: #2b2422;           
-    --bg_text: #faf8f6;           /* warm near-white, was neutral #fafafa */
-    --primary: #2dd4bf;           
-    --hover: #14b8a6;             
-    --secondary: #241f1d;         /* warm near-black, was neutral #262626 */
-    --muted: #5b4f4b;             
-    --marker: #453b37;            /* darker than --muted, was equal to it */
-
-    --badge: #221d1b;             /* warm near-black, was neutral #262626 */
-    --badge_text: #d8d2d0;        
+/* Light Mode Colors */
+.light{   
+    --background: #f5f2ef;        
+    --foreground: #1c1917;         
+    --foreground_muted: #6b5d58;       
+    --opposite-bg: #0c0a09;      
+    --opposite-fg: #2dd4bf;     
+    --bg_text: #faf8f6;               
 
     --navbar: var(--badge);       
 
+    --border: #2b242262;           
+    --outer_border: #2b24222d;       
+
+    --primary: #2dd4bf;            
+    --secondary: #241f1d;          
+    --hover: #14b8a6;             
+    --muted: #5b4f4b;             
+    --marker: #453b37;             
+
+    --badge: #221d1b;              
+    --badge_text: #d8d2d0;         
     --highlight: #ccfbf1;        
-    --highlight_text: #1c1917;    
-
-    --opposite-bg: #0c0a09;      
-    --opposite-fg: #2dd4bf;    
-}
-
-/*.light{ 
-    --background: #1d1816;   
-    --foreground: #ffffff;      
-    --foreground_muted: #e5e5e5;
-    --border: #7c6d67;      
-    --bg_text: #473c39;
-    --primary: #14b8a6;  
-    --hover: #2dd4bf;  
-    --secondary: #ccc6c4;  
-    --muted: #7c6d67;  
-    --marker: #aba09c; 
-    --badge: #1d1816;
-    --badge_text: var(--color-secondary);
-    --navbar: #1d1816;  
-}*/
+    --highlight_text: #1c1917;     
+} 
 
 body {
   background: var(--background);
