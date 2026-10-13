@@ -13,7 +13,7 @@ export default function Home() {
         <TechMatrixBg />
       </div>
       <ThemeSwitch />
-      <div className='w-full max-w-3xl'>
+      <div className='w-full max-w-3xl 2k:max-w-4xl'>
         <header className='bg-navbar sticky top-0 z-50'>
           <nav className="border rounded-t-sm border-border md:rounded-t-none md:border-t-0 px-4 sm:px-16 text-center" id='navbar'>
             <div className="flex text-xs items-center font-mono tracking-normal sm:tracking-widest text-secondary">
