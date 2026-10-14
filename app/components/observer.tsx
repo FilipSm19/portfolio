@@ -4,58 +4,90 @@ import { useEffect, useRef, useState } from "react";
 
 interface ObserverOptions {
     rootMargin?: string;
-    threshold?: number | number[];
+    group?: string;
 }
 
-// The correct signal for "does this device actually support hover" — a wide
-// touchscreen still can't hover, and a narrow window on a desktop with a
-// mouse still can. Viewport width alone gets both of those wrong.
-const HOVER_QUERY = "(hover: hover) and (pointer: fine)";
+const DEVICE_HAS_CURSOR = "(hover: hover) and (pointer: fine)"; // Media query string if device supports precise pointers and hover
 
-export function useActiveObserver<T extends HTMLElement = HTMLLIElement>(
+const groups = new Map<string, Set<(active: boolean) => void>>(); // groups -> (group Name & Set of functions), Set of function where function(active) and is void, active must be bool.
+function getGroupSet(group: string) {
+    if (!groups.has(group)) {
+        // If group doesn't exist, create it and add new Set
+        groups.set(group, new Set());
+    }
+
+    return groups.get(group)!;
+}
+
+export function useActiveObserver<T extends HTMLElement = HTMLElement>(
     options: ObserverOptions = {}
 ) {
-    const { rootMargin = "-41% 0px -57% 0px", threshold = 0 } = options;
+    const { rootMargin = "-30% 0px -65% 0px", group = "default" } = options;
 
-    const [isActive, setIsActive] = useState(false);
-    const elementRef = useRef<T | null>(null);
+    const [isActive, setIsActive] = useState(false);  // Defining state for sending to HTML element 
+    const elementRef = useRef<T | null>(null); // Defining element reference of observed element 
+    // (it can be HTMLDiv,Ulist,il, etc.. so we put T for flexibility or null is no element, null is default) | IF T is not defined look at  <T extends HTMLElement = HTMLElement>
 
     useEffect(() => {
         const element = elementRef.current;
         if (!element) return;
 
-        const hoverQuery = window.matchMedia(HOVER_QUERY);
-        let observer: IntersectionObserver | null = null;
+        const deviceHasCursor = window.matchMedia(DEVICE_HAS_CURSOR); // Check if device has cursor (desktop device)
 
+        const groupSet = getGroupSet(group); // Getting or creating new group set through function for group
+
+        let observer: IntersectionObserver | null = null; // Creates "observer" variable which equals to NULL and can be IntersectionObserver as well.
+
+        // Function - Setup:
+        // - Disconnects and sets observer to null (reset)
+        // - If device has cursor set element state to false & abort setup
+        // - Add set active function for current element in group set
+        // - Attach new observer to "observer" variable & observe the current element
         const setup = () => {
             observer?.disconnect();
             observer = null;
 
-            if (hoverQuery.matches) {
-                // Real hover device — CSS `hover:` handles it, this hook
-                // stays out of the way so the two never fight over state.
-                setIsActive(false);
+            if (deviceHasCursor.matches) {
+                setIsActive(false); // Sets data-active = false in HTML
+                groupSet.delete(setIsActive); // Removes group set entirely for specific element
                 return;
             }
 
+            groupSet.add(setIsActive);
+
             observer = new IntersectionObserver(
-                ([entry]) => setIsActive(entry.isIntersecting),
-                { rootMargin, threshold }
+                ([entry]) => handleObserverTrigger(entry.isIntersecting), // CALLBACK FUNCTION ->
+                { rootMargin } // OPTIONS -> {rootMargin: rootMargin}, simplified
             );
             observer.observe(element);
         };
 
+        // Function - Handle Observer Trigger Events:
+        // - When triggered: deactivates other elements in the group, then activates the current one.
+        // - When not triggered: deactivates the current element. 
+        const handleObserverTrigger = (triggered: boolean) => {
+            if (triggered) {
+                groupSet.forEach((setter) => {
+                    if (setter !== setIsActive) setter(false);
+                });
+                setIsActive(true);
+            } else {
+                setIsActive(false);
+            }
+        };
+
+        // Start setup - function call
         setup();
-        // Fires only when hover support itself changes (e.g. a 2-in-1
-        // laptop switching between mouse and tablet mode) — not on every
-        // resize pixel like the old width-based version did.
-        hoverQuery.addEventListener("change", setup);
+
+        // If devices interaction type changes call setup function again
+        deviceHasCursor.addEventListener("change", setup);
 
         return () => {
             observer?.disconnect();
-            hoverQuery.removeEventListener("change", setup);
+            deviceHasCursor.removeEventListener("change", setup);
+            groupSet.delete(setIsActive);
         };
-    }, [rootMargin, threshold]);
+    }, [rootMargin, group]);
 
     return { elementRef, isActive };
 }
