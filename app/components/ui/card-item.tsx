@@ -1,6 +1,6 @@
 "use client";
 
-import { useActiveObserver } from "../observer";
+import { useNoCursorObserver } from "../observer";
 
 export default function CardItem({
     title,
@@ -15,7 +15,7 @@ export default function CardItem({
     className?: string;
     classNameList?: string;
 }) {
-    const { elementRef, isActive } = useActiveObserver<HTMLLIElement>();
+    const { elementRef, isActive } = useNoCursorObserver<HTMLLIElement>();
 
     return (
         <li

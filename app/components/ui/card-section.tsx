@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useActiveObserver } from "../observer";
+import { useNoCursorObserver } from "../observer";
 
 interface CardSectionProps {
     title: string;
@@ -9,7 +9,7 @@ interface CardSectionProps {
 }
 
 export default function CardSection({ title, id, children }: CardSectionProps) {
-    const { elementRef, isActive } = useActiveObserver<HTMLDivElement>();
+    const { elementRef, isActive } = useNoCursorObserver<HTMLDivElement>("section");
 
     return (
         <div ref={elementRef} data-active={isActive} className="w-full scroll-mt-20 group" id={id}>

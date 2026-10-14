@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { useActiveObserver } from "../observer";
+import { useNoCursorObserver } from "../observer";
 
 export default function CardItemInteractive({
     title,
@@ -13,7 +13,7 @@ export default function CardItemInteractive({
     className?: string;
 }) {
     const [isOpen, setIsOpen] = useState(false);
-    const { elementRef, isActive } = useActiveObserver<HTMLLIElement>();
+    const { elementRef, isActive } = useNoCursorObserver<HTMLLIElement>();
 
     return (
         <li ref={elementRef} data-active={isActive} className={'select-none rounded-sm overflow-hidden group/item ' + className} onClick={() => setIsOpen(!isOpen)}>

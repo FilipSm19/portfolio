@@ -2,14 +2,59 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface ObserverOptions {
-    rootMargin?: string;
-    group?: string;
+const ROOTMARGIN = "-32% 0px -65% 0px";
+const DEVICE_HAS_CURSOR = "(hover: hover) and (pointer: fine)";
+
+// Define callbacks map for elements 
+type IntersectionCallback = (isIntersecting: boolean, entry: IntersectionObserverEntry) => void;
+const callbacks = new Map<Element, IntersectionCallback>();
+
+// Define observer
+let observer: IntersectionObserver | null = null;
+
+// Define groups
+const groups = new Map<string, Set<(active: boolean) => void>>();
+
+function createObserver() {
+    return new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const callback = callbacks.get(entry.target);
+
+            if (callback) {
+                callback(entry.isIntersecting, entry);
+            }
+        })
+    }, { rootMargin: ROOTMARGIN });
 }
 
-const DEVICE_HAS_CURSOR = "(hover: hover) and (pointer: fine)"; // Media query string if device supports precise pointers and hover
 
-const groups = new Map<string, Set<(active: boolean) => void>>(); // groups -> (group Name & Set of functions), Set of function where function(active) and is void, active must be bool.
+// Observe element function
+// If no observer create it
+function observeElement(element: Element | null = null, callback: IntersectionCallback) {
+    if (!element) return;
+
+    callbacks.set(element, callback);
+
+    if (!observer) {
+        observer = createObserver();
+    }
+
+    observer.observe(element);
+}
+
+// Unobserve element function & if no callbacks disconnect it and set to null
+function unobserveElement(element: Element | null = null) {
+    if (!element) return;
+
+    callbacks.delete(element);
+
+    if (observer) observer.unobserve(element);
+
+    if (callbacks.size === 0) {
+        observer?.disconnect();
+        observer = null;
+    }
+}
 function getGroupSet(group: string) {
     if (!groups.has(group)) {
         // If group doesn't exist, create it and add new Set
@@ -19,75 +64,56 @@ function getGroupSet(group: string) {
     return groups.get(group)!;
 }
 
-export function useActiveObserver<T extends HTMLElement = HTMLElement>(
-    options: ObserverOptions = {}
-) {
-    const { rootMargin = "-30% 0px -65% 0px", group = "default" } = options;
 
-    const [isActive, setIsActive] = useState(false);  // Defining state for sending to HTML element 
-    const elementRef = useRef<T | null>(null); // Defining element reference of observed element 
-    // (it can be HTMLDiv,Ulist,il, etc.. so we put T for flexibility or null is no element, null is default) | IF T is not defined look at  <T extends HTMLElement = HTMLElement>
+export function useNoCursorObserver<T extends HTMLElement = HTMLElement>(group: string = "default") {
+    const elementRef = useRef<T | null>(null);
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const element = elementRef.current;
+        const deviceHasCursor = window.matchMedia(DEVICE_HAS_CURSOR);
+
+        const groupSet = getGroupSet(group);
+
         if (!element) return;
 
-        const deviceHasCursor = window.matchMedia(DEVICE_HAS_CURSOR); // Check if device has cursor (desktop device)
-
-        const groupSet = getGroupSet(group); // Getting or creating new group set through function for group
-
-        let observer: IntersectionObserver | null = null; // Creates "observer" variable which equals to NULL and can be IntersectionObserver as well.
-
-        // Function - Setup:
-        // - Disconnects and sets observer to null (reset)
-        // - If device has cursor set element state to false & abort setup
-        // - Add set active function for current element in group set
-        // - Attach new observer to "observer" variable & observe the current element
-        const setup = () => {
-            observer?.disconnect();
-            observer = null;
-
+        function setup() {
             if (deviceHasCursor.matches) {
-                setIsActive(false); // Sets data-active = false in HTML
-                groupSet.delete(setIsActive); // Removes group set entirely for specific element
+                setIsActive(false);
+                if (observer) {
+                    unobserveElement(element);
+                }
+                groupSet?.delete(setIsActive);
                 return;
             }
-
             groupSet.add(setIsActive);
+            observeElement(element, (isIntersecting) => {
+                if (isIntersecting) {
+                    groupSet.forEach((setter) => {
+                        if (setter !== setIsActive) setter(false);
+                    });
+                    setIsActive(true);
+                } else {
+                    setIsActive(false);
+                }
+            });
+        }
 
-            observer = new IntersectionObserver(
-                ([entry]) => handleObserverTrigger(entry.isIntersecting), // CALLBACK FUNCTION ->
-                { rootMargin } // OPTIONS -> {rootMargin: rootMargin}, simplified
-            );
-            observer.observe(element);
-        };
-
-        // Function - Handle Observer Trigger Events:
-        // - When triggered: deactivates other elements in the group, then activates the current one.
-        // - When not triggered: deactivates the current element. 
-        const handleObserverTrigger = (triggered: boolean) => {
-            if (triggered) {
-                groupSet.forEach((setter) => {
-                    if (setter !== setIsActive) setter(false);
-                });
-                setIsActive(true);
-            } else {
-                setIsActive(false);
-            }
-        };
-
-        // Start setup - function call
         setup();
-
-        // If devices interaction type changes call setup function again
         deviceHasCursor.addEventListener("change", setup);
 
         return () => {
-            observer?.disconnect();
+            if (observer) {
+                unobserveElement(element);
+            }
+
             deviceHasCursor.removeEventListener("change", setup);
             groupSet.delete(setIsActive);
         };
-    }, [rootMargin, group]);
+
+    }, [group]);
 
     return { elementRef, isActive };
 }
+
+
