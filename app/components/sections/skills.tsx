@@ -3,10 +3,10 @@ import SkillItem from "../ui/card-item";
 export default function Skills() {
     return <div>
         <ul className='flex flex-col sm:flex-row flex-wrap gap-5 tracking-wider'>
-            <SkillItem title='Application Development' className='sm:w-[calc(50%-10px)]'><AppDev /></SkillItem>
-            <SkillItem title='Databases' className='sm:w-[calc(50%-10px)]'><Databases /></SkillItem>
-            <SkillItem title='Web Development' className='sm:w-[calc(50%-10px)]'><WebDev /></SkillItem>
-            <SkillItem title='Programming Languages' className='sm:w-[calc(50%-10px)]'><ProgLang /></SkillItem>
+            <SkillItem title='Application Development' className='sm:w-[calc(50%-0.625rem)]'><AppDev /></SkillItem>
+            <SkillItem title='Databases' className='sm:w-[calc(50%-0.625rem)]'><Databases /></SkillItem>
+            <SkillItem title='Web Development' className='sm:w-[calc(50%-0.625rem)]'><WebDev /></SkillItem>
+            <SkillItem title='Programming Languages' className='sm:w-[calc(50%-0.625rem)]'><ProgLang /></SkillItem>
         </ul>
     </div>;
 }
