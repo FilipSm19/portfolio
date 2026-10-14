@@ -143,16 +143,14 @@ body {
 
   .highlight {
     @apply group-hover/item:bg-highlight
-          group-hover/item:text-highlight_text
+          group-hover/item:text-highlight_text!
           group-hover/item:border-border
           group-data-[active=true]/item:bg-highlight
-          group-data-[active=true]/item:text-highlight_text
+          group-data-[active=true]/item:text-highlight_text!
           group-data-[active=true]/item:border-border
           transition-all
           px-0.5
           pb-0.5
-          rounded-md
-          font-medium
-          text-foreground;
+          rounded-md;
   }
 }
