@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from './providers';
+import TechMatrixBg from "./components/ui/techmatrix";
+import ScrollProgress from "./components/ui/scrollProgress";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -31,7 +33,14 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans"><Providers>{children}</Providers></body>
+      <body className="min-h-full flex flex-col font-sans">
+        <ScrollProgress />
+        <Providers>
+          <div className="fixed inset-0 -z-1 pointer-events-none hidden sm:block">
+            <TechMatrixBg />
+          </div>{children}
+        </Providers>
+      </body>
     </html>
   );
 }

@@ -7,16 +7,25 @@ export default function CardItemInteractive({
     title,
     children,
     className = "",
+    canInteract = true,
 }: {
     title: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
+    canInteract?: boolean;
 }) {
+
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleToggle = () => {
+        if (!canInteract) return;
+        setIsOpen(!isOpen);
+    }
+
     const { elementRef, isActive } = useNoCursorObserver<HTMLLIElement>();
 
     return (
-        <li ref={elementRef} data-active={isActive} className={'select-none rounded-sm overflow-hidden group/item ' + className} onClick={() => setIsOpen(!isOpen)}>
+        <li ref={elementRef} data-active={isActive} className={'select-none rounded-sm overflow-hidden group/item ' + className} onClick={() => handleToggle()}>
 
             <div className={`flex items-center gap-2.5 cursor-pointer w-full px-3 item-card-title ${isOpen && "bg-badge"}`}>
                 <motion.span

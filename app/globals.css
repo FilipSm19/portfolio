@@ -3,7 +3,44 @@
 :root { 
     --background: #0c0a09;
     --foreground: #ededed;  
+    scrollbar-gutter: stable;   
+    
+    /* Custom Scrollbar */
+    *::-webkit-scrollbar {
+      width: 12px;   
+      @media(max-width: 768px){ 
+        width: 4px; 
+      } 
+    } 
+ 
+    *::-webkit-scrollbar-track { 
+      background: var(--bg_text); 
 
+      @media(max-width: 768px){
+        background: var(--badge); 
+      }
+    }
+ 
+    *::-webkit-scrollbar-thumb {   
+      background: linear-gradient( to bottom, transparent 0%, var(--scrollbar) calc(var(--scroll-progress, 10%) * 0.75 + 10%), transparent 100%);     
+      border-left: 2px solid var(--color-background);
+
+      @media(max-width: 768px){ 
+        border: none;
+        border-radius: none;
+        background: linear-gradient( 
+        to bottom, 
+        transparent calc(var(--scroll-progress, 0%) - 20% ), 
+        var(--badge_text) calc(var(--scroll-progress, 0%) - 19% ), 
+        var(--badge_text) calc(var(--scroll-progress, 10%) * 0.75 + 10%), 
+        var(--badge_text) calc(var(--scroll-progress, 100%) + 19%),
+        transparent calc(var(--scroll-progress, 100%) + 20%));     
+      } 
+       
+    }
+    
+    /* Font Size Responsiveness */
+    
     @media(min-width: 1920px){ 
       font-size: 18px;
     }
@@ -42,6 +79,8 @@
   --color-highlight: var(--highlight);
   --color-highlight_text: var(--highlight_text);
 
+  --color-scrollbar: var(--scrollbar);
+
   --breakpoint-2k:2048px;
 
 }
@@ -70,6 +109,8 @@
     --badge_text: var(--secondary); 
     --highlight: var(--badge);
     --highlight_text: var(--primary);
+
+    --scrollbar: #0f766e;
 } 
 
 /* Light Mode Colors */
@@ -95,7 +136,9 @@
     --badge: #221d1b;              
     --badge_text: #d8d2d0;         
     --highlight: #ccfbf1;        
-    --highlight_text: #1c1917;     
+    --highlight_text: #1c1917;  
+    
+    --scrollbar: var(--primary);
 } 
 
 
