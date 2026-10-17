@@ -1,4 +1,4 @@
-import SkillItem from "../ui/card-item";
+import SkillItem from "../ui/cards/card-item";
 import { H } from "../ui/text_deco";
 
 const skillsData = {

@@ -3,7 +3,7 @@ import PMS from "../projects/pms";
 import PeerSupp from "../projects/peersupp";
 import HauntEsc from "../projects/hauntesc";
 import Restaurant from "../projects/restaurant";
-import ProjectItem from "../ui/card-item-interactive";
+import ProjectItem from "../ui/cards/card-item-interactive";
 
 export default function Projects() {
     return <div>

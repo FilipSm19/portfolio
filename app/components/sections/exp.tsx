@@ -1,4 +1,4 @@
-import ExpItem from "../ui/card-item";
+import ExpItem from "../ui/cards/card-item";
 import { H as BaseH } from "../ui/text_deco";
 
 const H = ({ children }: { children: React.ReactNode }) => (<BaseH className="font-medium text-foreground">{children}</BaseH>)

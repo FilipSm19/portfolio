@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useNoCursorObserver } from "../observer";
+import { useNoCursorObserver } from "../../observer";
 
 interface CardSectionProps {
     title: string;

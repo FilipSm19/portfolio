@@ -1,21 +1,21 @@
 import Projects from "./components/sections/projects";
-import SectionCard from "./components/ui/card-section";
+import SectionCard from "./components/ui/cards/card-section";
 import Skills from "./components/sections/skills";
 import Exp from "./components/sections/exp";
 import Contact from "./components/sections/contact";
 import Navbar from "./components/ui/navbar";
 import MainLayout from "./components/ui/mainLayout";
-import MainContainer from "./components/ui/mainContainer";
+import MainContainer from "./components/ui/main";
 
 export default function Home() {
   return <MainLayout>
     <div className='w-full max-w-3xl 2k:max-w-4xl'>
       <header className='bg-navbar sticky top-0 z-50'>
-        <Navbar>
-          <a href="#projects" className="w-full py-4">Projects</a>
-          <a href="#skills" className="w-full py-4">Skills</a>
-          <a href="#experience" className="w-full py-4">Experience</a>
-          <a href="#contact" className="w-full py-4">Contact</a>
+        <Navbar className="[&>a]:w-full [&>a]:p-4">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
         </Navbar>
 
       </header>
