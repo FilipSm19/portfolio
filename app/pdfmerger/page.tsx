@@ -5,15 +5,15 @@ import MainLayout from "../components/ui/mainLayout";
 import Navbar from "../components/ui/navbar";
 import { FileIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
 import CardSection from "../components/ui/cards/card-section";
-import { ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 
 export default function PdfMerger() {
+    const [files, setFiles] = useState<File[]>([]);
+
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
-            const list = event.target.files;
-            for (const file of event.target.files) {
-                console.log(file.name);
-            }
+            const uploadedFiles = event.target.files;
+            setFiles((currentFiles) => [...currentFiles, ...uploadedFiles]);
         }
     };
     return <MainLayout>
@@ -30,16 +30,39 @@ export default function PdfMerger() {
             </Navbar>
         </header >
         <MainContainer>
-            <CardSection>
-                <div className="border rounded-xs font-mono flex items-center justify-center h-32 w-full bg-badge/50 hover:bg-badge transition-colors relative select-none">
-                    <input multiple type='file' className='absolute w-full h-full file:cursor-grab cursor-pointer opacity-0' accept="image/*, .pdf" onChange={handleFileChange} />
-                    <div className='p-2'>
-                        <FileUploadIcon className='text-center w-full size-8' />
-                        <span className="">Drag and Drop PDFs</span>
+            <CardSection className='p-0'>
+                <div className={"rounded-xs font-mono relative select-none overflow-hidden min-h-32 pt-32"}>
+                    <div className='group/upload w-full'>
+                        <input multiple type='file' accept="image/*, .pdf" onChange={handleFileChange} className='top-0 left-0 absolute w-full h-full cursor-pointer opacity-0 z-5' />
+                        <div className={'top-0 flex flex-col justify-center text-center *:transition-opacity transition-colors *:duration-500 absolute w-full h-32 bg-badge/50 group-hover/upload:bg-badge'}>
+                            < FileUploadIcon className={'w-full size-8 group-hover/upload:opacity-20'} />
+                            <span className='group-hover/upload:opacity-20'>Drag / Browse Files</span>
+                        </div>
                     </div>
+                    {files.length > 0 &&
+                        <div className='flex flex-wrap w-full items-start'>
+                            {files.map((file, index) => (<FileItem file={file} key={index} />))}
+                        </div>
+                    }
                 </div>
             </CardSection>
 
         </MainContainer>
     </MainLayout >
+}
+
+function FileItem({ file }: { file: File }) {
+    if (!file) return;
+    const name = file.name;
+
+    return <div className="w-1/5 hover:text-primary cursor-grab z-10 px-6 py-4" aria-label={name} title={name}>
+        <FileIcon className='text-center text w-full size-6 mb-2' />
+        <div className='overflow-hidden text-ellipsis wrap-break-word text-wrap text-[0.625rem] flex-1 text-center'>{
+            (name.length > 23) ?
+                name.substring(0, 20) + '…' + name.slice(-3)
+                :
+                name
+
+        }</div>
+    </div>;
 }
