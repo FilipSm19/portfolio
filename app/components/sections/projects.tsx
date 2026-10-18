@@ -3,6 +3,7 @@ import PMS from "../projects/pms";
 import PeerSupp from "../projects/peersupp";
 import HauntEsc from "../projects/hauntesc";
 import Restaurant from "../projects/restaurant";
+import Link from "next/link";
 import ProjectItem from "../ui/cards/card-item-interactive";
 
 export default function Projects() {
@@ -20,6 +21,7 @@ export default function Projects() {
             <ProjectItem title='3D Computer Video Game - "The Haunting Escape"'>
                 <HauntEsc />
             </ProjectItem>
+            <Link href="pdfmerger"><ProjectItem title='Online PDF Merger' canInteract={false}></ProjectItem></Link>
         </ul>
     </div>;
 }
