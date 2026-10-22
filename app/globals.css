@@ -1,8 +1,9 @@
 @import "tailwindcss";
+@import "./animations.css";
 
 :root { 
     --background: #0c0a09;
-    --foreground: #ededed;  
+    --foreground: #ededed;
 } 
 
 @theme inline {  
@@ -16,15 +17,15 @@
   --color-foreground_muted: var(--foreground_muted);
   --color-opposite-bg: var(--opposite-bg);
   --color-opposite-fg: var(--opposite-fg);
-  --color-bg_text: var(--bg_text); 
+  --color-bg_text: var(--bg_text);
   
   --color-navbar: var(--navbar);
 
   --color-border: var(--border);
   --color-outer_border: var(--outer_border);
  
-  --color-primary: var(--primary); 
-  --color-secondary: var(--secondary); 
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-hover: var(--hover);
   --color-muted: var(--muted);
   --color-marker: var(--marker);
@@ -35,6 +36,7 @@
   --color-highlight_text: var(--highlight_text);
 
   --color-scrollbar: var(--scrollbar);
+  --color-area: var(--area);
 
   --breakpoint-2k:2048px;
 
@@ -42,58 +44,60 @@
 
 /* Dark Mode Colors */
 .dark{ 
-    --background: #0c0a09;  
+    --background: #0c0a09;
     --foreground: #ededed;
-    --foreground_muted: #d8d2d0; 
+    --foreground_muted: #d8d2d0;
     --opposite-bg: #f3f1f3;
-    --opposite-fg: #171717;  
-    --bg_text: #000000;  
+    --opposite-fg: #171717;
+    --bg_text: #000000;
 
     --navbar: var(--background);
 
-    --border: #2b2422;     
-    --outer_border: var(--border);     
+    --border: #2b2422;
+    --outer_border: var(--border);
 
-    --primary: #2dd4bf;   
-    --secondary: #aba09c;  
-    --hover: #2dd4bf;  
-    --muted: #5b4f4b;  
-    --marker: #7c6d67; 
+    --primary: #2dd4bf;
+    --secondary: #aba09c;
+    --hover: #2dd4bf;
+    --muted: #5b4f4b;
+    --marker: #7c6d67;
 
     --badge: #171717;
-    --badge_text: var(--secondary); 
+    --badge_text: var(--secondary);
     --highlight: var(--badge);
     --highlight_text: var(--primary);
 
     --scrollbar: #0d9488;
+    --area: #171717;
 } 
 
 /* Light Mode Colors */
 .light{   
-    --background: #f5f2ef;        
-    --foreground: #1c1917;         
-    --foreground_muted: #6b5d58;       
-    --opposite-bg: #0c0a09;      
-    --opposite-fg: #2dd4bf;     
-    --bg_text: #faf8f6;               
+    --background: #f5f2ef;
+    --foreground: #1c1917;
+    --foreground_muted: #6b5d58;
+    --opposite-bg: #0c0a09;
+    --opposite-fg: #2dd4bf;
+    --bg_text: #faf8f6;
 
-    --navbar: var(--badge);       
+    --navbar: var(--badge);
 
-    --border: #2b242262;           
-    --outer_border: #2b24222d;       
+    --border: #2b242262;
+    --outer_border: #2b24222d;
 
-    --primary: #2dd4bf;            
-    --secondary: #241f1d;          
-    --hover: #14b8a6;             
-    --muted: #5b4f4b;             
-    --marker: #453b37;             
+    --primary: #2dd4bf;
+    --secondary: #241f1d;
+    --hover: #14b8a6;
+    --muted: #5b4f4b;
+    --marker: #453b37;
 
-    --badge: #221d1b;              
-    --badge_text: #d8d2d0;         
-    --highlight: #ccfbf1;        
-    --highlight_text: #1c1917;  
+    --badge: #221d1b;
+    --badge_text: #d8d2d0;
+    --highlight: #ccfbf1;
+    --highlight_text: #1c1917;
     
     --scrollbar: #2dd4bf;
+    --area: #d8d2d0;
 } 
 
 html{ 
@@ -109,36 +113,36 @@ html{
 
     /* Custom Scrollbar */ 
     
-    scrollbar-gutter: stable; 
+    scrollbar-gutter: stable;
 
     *::-webkit-scrollbar {
-      width: 10px;   
+      width: 10px;
       @media(max-width: 768px){ 
-        width: 4px; 
+        width: 4px;
       } 
     } 
  
-    *::-webkit-scrollbar-track {  
-        background: var(--badge); 
+    *::-webkit-scrollbar-track {
+        background: var(--badge);
 
-      @media(min-width: 769px){  
-        background: var(--bg_text); 
+      @media(min-width: 769px){
+        background: var(--bg_text);
         border-left: 2px solid var(--color-background);
       }
     }
  
-    *::-webkit-scrollbar-thumb {   
-      background: linear-gradient( 
-        to bottom, 
+    *::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        to bottom,
         transparent calc(var(--scroll-progress, 0%) - 20% ), 
         var(--badge_text) calc(var(--scroll-progress, 0%) - 19% ), 
         var(--badge_text) calc(var(--scroll-progress, 10%) * 0.75 + 10%), 
         var(--badge_text) calc(var(--scroll-progress, 100%) + 19%),
-        transparent calc(var(--scroll-progress, 100%) + 20%));   
+        transparent calc(var(--scroll-progress, 100%) + 20%));
 
-      @media(min-width: 768px){   
+      @media(min-width: 768px){
         transition: all 0.6s ease;
-        background: linear-gradient( to bottom, transparent 0%, var(--scrollbar) calc(var(--scroll-progress, 10%) * 0.75 + 10%), transparent 100%);      
+        background: linear-gradient( to bottom, transparent 0%, var(--scrollbar) calc(var(--scroll-progress, 10%) * 0.75 + 10%), transparent 100%);
       } 
        
     }
@@ -147,7 +151,7 @@ html{
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
 
   &::-webkit-scrollbar-thumb:hover {
     @media(min-width: 769px){ 
@@ -179,9 +183,6 @@ body {
   .badge{
     @apply uppercase bg-badge text-badge_text p-1 pl-2 rounded-md tracking-[0.25em] font-mono border-border;
   }
-  .btn{
-    @apply px-2.5 py-1 bg-badge border border-border text-badge_text hover:text-primary rounded-sm text-[0.8rem] tracking-widest font-mono cursor-pointer 
-  }  
   
   #navbar a{
     @apply text-badge_text hover:text-primary
@@ -213,4 +214,20 @@ body {
           pb-0.5
           rounded-md;
   }
+}
+ 
+@utility btn{
+  @apply px-2.5 py-1 bg-badge border border-border text-badge_text rounded-sm text-[0.8rem] tracking-widest font-mono not-disabled:hover:text-primary not-disabled:cursor-pointer disabled:opacity-30 select-none not-disabled:hover:border-primary;
+}  
+
+@utility badge{
+  @apply uppercase bg-badge text-badge_text p-1 pl-2 rounded-md tracking-[0.25em] font-mono border-border;
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility transition-appearance{
+  @apply transition-[color,background-color,border-color,box-shadow,opacity] transition-discrete duration-400;
 }

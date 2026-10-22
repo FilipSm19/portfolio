@@ -1,0 +1,17 @@
+@keyframes upload{
+    0%{
+        transform: translateY(0);
+        opacity: 0;
+    } 
+    50%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-0.75rem); 
+        opacity: 0;
+    } 
+}
+
+@utility animate-upload{
+    animation: upload 1s infinite ease-in-out;
+}
