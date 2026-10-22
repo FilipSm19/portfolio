@@ -12,10 +12,10 @@ export default function Home() {
     <div className='w-full max-w-3xl 2k:max-w-4xl'>
       <header className='bg-navbar sticky top-0 z-50'>
         <Navbar className="[&>a]:w-full [&>a]:p-4">
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+          <a href="#projects" title="Projects">Projects</a>
+          <a href="#skills" title="Skills">Skills</a>
+          <a href="#experience" title="Experience">Experience</a>
+          <a href="#contact" title="Contact">Contact</a>
         </Navbar>
 
       </header>
