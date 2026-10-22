@@ -3,10 +3,11 @@ import Link from "next/link";
 import MainContainer from "../components/ui/main";
 import MainLayout from "../components/ui/mainLayout";
 import Navbar from "../components/ui/navbar";
-import { CleanUpIcon, DeleteIcon, ExchangeIcon, FileDownloadIcon, FileIcon, FileUploadIcon, HomeIcon, MoveToEndIcon, ReloadIcon } from "../components/ui/icons/icons";
+import { CleanUpIcon, FileDownloadIcon, FileIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
 import CardSection from "../components/ui/cards/card-section";
 import { useState, ChangeEvent } from "react";
 import MergeFiles, { ReorderFiles } from "./pdfmerger";
+import FileItem from "./fileitem";
 
 export default function PdfMerger() {
     const [files, setFiles] = useState<File[]>([]);
@@ -37,7 +38,7 @@ export default function PdfMerger() {
     }}>
         {<input multiple type='file' accept="image/*, .pdf" onChange={addFiles} className={'top-0 left-0 absolute w-full h-full opacity-0 z-55 ' + (isDragging ? 'visible' : 'invisible')}
             onDragLeave={() => { setIsDragging(false); }}
-            onDrop={(e) => { e.preventDefault(); setIsDragging(false); }} />}
+            onDrop={() => { setIsDragging(false); }} />}
         <MainLayout>
             <header className='bg-navbar sticky top-0 z-50'>
                 <Navbar className="[&>a]:py-4">
@@ -63,7 +64,7 @@ export default function PdfMerger() {
                                 </div>
                             </div>
                             {files.length > 0 &&
-                                <div className='flex-center flex-wrap w-full relative px-2'>
+                                <div className='flex-center flex-wrap w-full relative px-2 group/files'>
                                     {files.map((file, index) => (<FileItem
                                         file={file}
                                         index={index}
@@ -94,54 +95,3 @@ export default function PdfMerger() {
 
 
 }
-
-
-function FileItem(
-    {
-        file,
-        index,
-        onDelete,
-        isReorderHovered,
-        ReorderFiles,
-        filesLength,
-        onHoverStart,
-        onHoverEnd
-    }:
-        {
-            file: File,
-            index: number,
-            onDelete: () => void,
-            isReorderHovered: boolean;
-            ReorderFiles: (index: number) => void;
-            filesLength: number;
-            onHoverStart: () => void;
-            onHoverEnd: () => void;
-        }) {
-
-    if (!file) return null;
-    const name = file.name;
-
-    const notFirstIndexOrMoreThanTwo = (index !== 0 || filesLength > 2);
-
-    return <div className={'flex-center ' + (notFirstIndexOrMoreThanTwo ? 'w-1/3 sm:w-1/5' : 'w-1/5 sm:w-1/6')}>
-        {notFirstIndexOrMoreThanTwo && <div className={'text-[0.5rem] p-1 rounded-xs text-secondary hover:bg-badge hover:text-primary z-25 transition-appearance cursor-pointer'}
-            onMouseEnter={onHoverStart}
-            onMouseLeave={onHoverEnd}
-            onClick={(e) => { e.preventDefault(); ReorderFiles(index); }}>
-            {index !== 0 ? <ExchangeIcon className='size-5' /> : <MoveToEndIcon className="size-5" />}</div>}
-        <div className={(isReorderHovered ? 'text-secondary! ' : ' ') + "hover:text-primary z-10 px-3 py-4 relative group/file transition-colors duration-400 " + (notFirstIndexOrMoreThanTwo ? 'w-4/5' : 'w-full')} aria-label={name} title={name}>
-            <div className='not-group-hover/file:opacity-0 absolute z-15 top-2 right-4 cursor-pointer size-5 flex-center rounded-xs transition-appearance text-badge_text hover:bg-badge' title={'Remove File: ' + name} onClick={onDelete}>
-                <DeleteIcon className='size-3' />
-            </div>
-            <FileIcon className='text-center text w-full size-6 mb-2' />
-            <div className='overflow-hidden text-ellipsis wrap-break-word text-wrap text-[0.625rem] flex-1 text-center'>{
-                (name.length > 23) ?
-                    name.substring(0, 20) + '…' + name.slice(-3)
-                    :
-                    name
-
-            }</div>
-        </div>
-    </div >;
-}
-
