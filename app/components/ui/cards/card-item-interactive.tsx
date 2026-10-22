@@ -9,7 +9,7 @@ export default function CardItemInteractive({
     className = "",
     canInteract = true,
 }: {
-    title: string;
+    title: React.ReactNode;
     children?: React.ReactNode;
     className?: string;
     canInteract?: boolean;

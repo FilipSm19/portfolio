@@ -3,7 +3,7 @@ import Link from "next/link";
 import MainContainer from "../components/ui/main";
 import MainLayout from "../components/ui/mainLayout";
 import Navbar from "../components/ui/navbar";
-import { CleanUpIcon, FileDownloadIcon, FileIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
+import { CleanUpIcon, FileDownloadIcon, FileIcon, FilesIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
 import CardSection from "../components/ui/cards/card-section";
 import { useState, ChangeEvent } from "react";
 import MergeFiles, { ReorderFiles } from "./pdfmerger";
@@ -45,7 +45,7 @@ export default function PdfMerger() {
                     <Link href="/" className="w-1/8 flex justify-center" title="Home"><HomeIcon /></Link>
                     <div className="flex w-full items-center">
                         <div className='border-outer_border border-b flex-1 mx-2'></div>
-                        <span className='text-badge_text select-none leading-0 mx-8'><FileIcon className='inline' /> PDF Merger</span>
+                        <span className='text-badge_text select-none leading-0 mx-8'><FilesIcon className='inline' /> PDF Merger</span>
                         <div className='border-outer_border border-b flex-1 mx-2'></div>
                     </div>
 
