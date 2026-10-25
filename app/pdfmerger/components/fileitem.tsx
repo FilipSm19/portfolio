@@ -1,4 +1,4 @@
-import { DeleteIcon, ExchangeIcon, FileIcon, MoveToEndIcon } from "../components/ui/icons/icons";
+import { DeleteIcon, ExchangeIcon, FileIcon, MoveToEndIcon } from "../../components/ui/icons/icons";
 
 export default
 

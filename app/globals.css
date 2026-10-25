@@ -231,3 +231,17 @@ body {
 @utility transition-appearance{
   @apply transition-[color,background-color,border-color,box-shadow,opacity] transition-discrete duration-400;
 }
+
+@utility highlight-style {
+    @apply bg-highlight
+          text-highlight_text!
+          border-border
+          transition-all
+          px-0.5
+          pb-0.5
+          rounded-md;
+}
+
+@utility ul-default-marker{
+  @apply list-[square] list-inside marker:font-mono;
+}

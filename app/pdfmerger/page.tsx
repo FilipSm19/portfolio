@@ -3,11 +3,12 @@ import Link from "next/link";
 import MainContainer from "../components/ui/main";
 import MainLayout from "../components/ui/mainLayout";
 import Navbar from "../components/ui/navbar";
-import { CleanUpIcon, FileDownloadIcon, FileIcon, FilesIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
+import { CleanUpIcon, FileDownloadIcon, FilesIcon, FileUploadIcon, HomeIcon, ReloadIcon } from "../components/ui/icons/icons";
 import CardSection from "../components/ui/cards/card-section";
 import { useState, ChangeEvent } from "react";
-import MergeFiles, { ReorderFiles } from "./pdfmerger";
-import FileItem from "./fileitem";
+import MergeFiles from "./lib/pdf_merge";
+import ReorderFiles from "./lib/pdf_reorderfiles";
+import FileItem from "./components/fileitem";
 
 export default function PdfMerger() {
 
@@ -30,8 +31,21 @@ export default function PdfMerger() {
     const addFiles = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
             const uploadedFiles = Array.from(event.target.files);
-            setFiles((currentFiles) => [...currentFiles, ...uploadedFiles]);
+
+            const isPdfOrImage = uploadedFiles.every((item) => {
+                const type = item.type;
+                return type === "application/pdf" || type.startsWith("image/jpeg") || type.startsWith("image/png");
+            });
+
+            if (isPdfOrImage) {
+                setFiles((currentFiles) => [...currentFiles, ...uploadedFiles]);
+            }
+            else {
+                alert("Please select only PDF or image files.")
+            }
+
             event.target.value = "";
+
         }
     };
 
@@ -39,9 +53,27 @@ export default function PdfMerger() {
         setFiles((currentFiles) => currentFiles.filter((_, index) => index !== indexToRemove));
     }
 
-    return <div onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}>
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+
+        // Check if every dragged item is a PDF or an image
+        const isPdfOrImage = Array.from(e.dataTransfer.items).every((item) => {
+            const type = item.type;
+            return type === "application/pdf" || type.startsWith("image/jpeg") || type.startsWith("image/png");
+        });
+
+        if (isPdfOrImage) {
+            e.dataTransfer.dropEffect = "copy"; // Show green plus/copy cursor
+            setIsDragging(true);
+        } else {
+            e.dataTransfer.dropEffect = "none"; // Show blocked cursor for other files
+            setIsDragging(false);
+        }
+    };
+
+    return <div onDragOver={(e) => handleDragOver(e)}>
         {/* Outside Input For Dragging Files In When Draggin Over Drag-Over Div Wrapper (invisible when not dragging) */}
-        <input multiple type='file' accept="image/*, .pdf, .docx, application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={addFiles} className={'top-0 left-0 absolute w-full h-full opacity-0 z-55 ' + (isDragging ? 'visible' : 'invisible')}
+        <input multiple type='file' accept="image/jpeg, image/png, .pdf" onChange={addFiles} className={'top-0 left-0 absolute w-full h-full opacity-0 z-55 ' + (isDragging ? 'visible' : 'invisible')}
             onDragLeave={() => { setIsDragging(false); }}
             onDrop={() => { setIsDragging(false); }} />
 
@@ -64,19 +96,19 @@ export default function PdfMerger() {
 
             {/* Main */}
             <MainContainer>
-
                 {/* Div Wrapper To Disable Pointer Events On Dragging A File */}
                 <div className={'w-full text-center flex-col flex ' + (isDragging ? 'pointer-events-none' : ' ')}>
-
                     {/* Card Section */}
-                    <CardSection className='p-0 mb-8'>
+                    <CardSection className={'p-0 mb-8 transition-appearance ' + (isDragging ? 'in-[.dark]:border-primary/50' : '')}>
                         <div className={"rounded-xs font-mono relative select-none overflow-hidden min-h-32 pt-32"}>
                             <div className='group/upload'>
-                                <input multiple type='file' accept="image/*, .pdf" onChange={addFiles} className='top-0 left-0 absolute w-full h-full cursor-pointer opacity-0 z-5' />
-                                <div className={'top-0 flex flex-col justify-center text-center *:transition-appearance transition-appearance absolute w-full h-32 bg-area/50 ' + (isDragging ? 'text-primary' : '')}>
+                                <input multiple type='file' accept="image/jpeg, image/png, pdf" onChange={addFiles} className='top-0 left-0 absolute w-full h-full cursor-pointer opacity-0 z-5' />
+                                <div className={'top-0 flex flex-col justify-center text-center *:transition-appearance transition-appearance absolute w-full h-32 bg-area/50 ' + (isDragging ? 'in-[.dark]:text-primary!' : '')}>
                                     <FileUploadIcon className={'w-full size-8 group-hover/upload:opacity-20 ' + (isDragging ? 'animate-upload' : '')} />
                                     <span className='group-hover/upload:opacity-20'>{isDragging ? "Drop File" : "Drop / Browse Files"}</span>
+                                    <span className={'group-hover/upload:opacity-20 text-[0.625rem] text-secondary ' + (isDragging ? 'in-[.dark]:text-primary!' : '')}>Supports PNG, JPEG and PDF</span>
                                 </div>
+
                             </div>
 
                             {/* Files List UI */}
@@ -111,6 +143,32 @@ export default function PdfMerger() {
                     <button type='button' disabled={!(files.length > 1 || files.some(file => file.type.startsWith("image/")))} className='btn block self-center text-sm mb-2' title='Merge And Download Files' onClick={() => MergeFiles(files)}>
                         <FileDownloadIcon className='inline size-6' /> Merge & Download
                     </button>
+                </div>
+
+                <div className="select-none text-sm mb-4 text-justify">
+                    <ul className="ul-default-marker space-y-2">
+                        <li>
+                            Merge multiple PDFs into one, reorder them and download.
+                        </li>
+                        <li>
+                            Supports JPEGs & PNGs conversion to PDF.
+                        </li>
+                        <li>
+                            PDFs and images are processed <span className="highlight-style px-1">entirely in your browser</span>, meaning your sensitive files never touch an external database.
+                        </li>
+                        <li>
+                            <span className='mr-2'>Code showcase:</span>
+                            <Link
+                                href="https://github.com/FilipSm19/portfolio/blob/pdfTools/app/pdfmerger/page.tsx"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn inline-flex items-center"
+                            >
+                                GitHub
+                            </Link>
+
+                        </li>
+                    </ul>
                 </div>
             </MainContainer>
         </MainLayout >
