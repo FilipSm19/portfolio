@@ -1,6 +1,6 @@
 "use client";
 
-import { useNoCursorObserver } from "../../observer";
+import { useNoCursorObserver } from "../../../hooks/observer";
 
 export default function CardItem({
     title,

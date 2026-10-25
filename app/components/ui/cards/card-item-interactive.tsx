@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { useNoCursorObserver } from "../../observer";
+import { useNoCursorObserver } from "../../../hooks/observer";
 
 export default function CardItemInteractive({
     title,

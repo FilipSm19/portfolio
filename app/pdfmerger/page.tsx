@@ -9,6 +9,7 @@ import { useState, ChangeEvent } from "react";
 import MergeFiles from "./lib/pdf_merge";
 import ReorderFiles from "./lib/pdf_reorderfiles";
 import FileItem from "./components/fileitem";
+import BtnLink from "../components/ui/btn-link";
 
 export default function PdfMerger() {
 
@@ -158,14 +159,10 @@ export default function PdfMerger() {
                         </li>
                         <li>
                             <span className='mr-2'>Code showcase:</span>
-                            <Link
-                                href="https://github.com/FilipSm19/portfolio/blob/pdfTools/app/pdfmerger/page.tsx"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn inline-flex items-center"
-                            >
-                                GitHub
-                            </Link>
+                            <BtnLink
+                                url="https://github.com/FilipSm19/portfolio/blob/pdfTools/app/pdfmerger/page.tsx"
+                                title='GitHub'
+                            />
 
                         </li>
                     </ul>

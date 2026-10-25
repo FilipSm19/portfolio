@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useNoCursorObserver } from "../../observer";
+import { useNoCursorObserver } from "../../../hooks/observer";
 import { twMerge } from "tailwind-merge";
 
 interface CardSectionProps {

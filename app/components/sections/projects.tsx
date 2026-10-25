@@ -22,7 +22,7 @@ export default function Projects() {
             <ProjectItem title='3D Computer Video Game - "The Haunting Escape"'>
                 <HauntEsc />
             </ProjectItem>
-            <Link href="pdfmerger"><ProjectItem title={<div className='flex-center gap-1 group/pdfmergerlink'>{<FilesIcon className='not-group-hover/pdfmergerlink:animate-primary size-5 mb-0.5' />} Online PDF Merger</div>} canInteract={false}></ProjectItem></Link>
+            <Link href="pdfmerger"><ProjectItem title={<div className='flex-center gap-1'>{<FilesIcon className='not-group-hover/item:animate-primary size-5 mb-0.5' />} Online PDF Merger</div>} canInteract={false}></ProjectItem></Link>
         </ul>
     </div>;
 }
