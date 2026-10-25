@@ -59,3 +59,10 @@ export function MoveToEndIcon(props: SVGProps<SVGSVGElement>) {
         <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 16 16" {...props}>{/* Icon from Octicons by GitHub - https://github.com/primer/octicons/blob/main/LICENSE */}<path fill="currentColor" d="m10.78 8.53l-3.75 3.75a.749.749 0 1 1-1.06-1.06l2.469-2.47H1.75a.75.75 0 0 1 0-1.5h6.689L5.97 4.78a.749.749 0 1 1 1.06-1.06l3.75 3.75a.75.75 0 0 1 0 1.06M13 12.25v-8.5a.75.75 0 0 1 1.5 0v8.5a.75.75 0 0 1-1.5 0" /></svg>
     )
 }
+
+
+export function FilesIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24" {...props}>{/* Icon from Griddy Icons by Zuzana Benova - https://github.com/griddy-icons/griddy-icons/blob/main/LICENSE */}<path fill="currentColor" fillRule="evenodd" d="M7 2h7.56L20 7.44V19H7zm10.94 5.5L14.5 4.06V7.5zm-9.44-4v14h10V9h-4.25C13.56 9 13 8.44 13 7.75V3.5zM4 5h1.5v15.5H17V22H4z" clipRule="evenodd" /></svg>
+    )
+}

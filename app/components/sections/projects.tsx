@@ -5,6 +5,7 @@ import HauntEsc from "../projects/hauntesc";
 import Restaurant from "../projects/restaurant";
 import Link from "next/link";
 import ProjectItem from "../ui/cards/card-item-interactive";
+import { FilesIcon } from "../ui/icons/icons";
 
 export default function Projects() {
     return <div>
@@ -21,7 +22,7 @@ export default function Projects() {
             <ProjectItem title='3D Computer Video Game - "The Haunting Escape"'>
                 <HauntEsc />
             </ProjectItem>
-            <Link href="pdfmerger"><ProjectItem title='Online PDF Merger' canInteract={false}></ProjectItem></Link>
+            <Link href="pdfmerger"><ProjectItem title={<div className='flex-center gap-1 group/pdfmergerlink'>{<FilesIcon className='not-group-hover/pdfmergerlink:animate-primary size-5 mb-0.5' />} Online PDF Merger</div>} canInteract={false}></ProjectItem></Link>
         </ul>
     </div>;
 }

@@ -51,7 +51,7 @@ export default function ThemeSwitch() {
                 ? 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) colors 0.2s'
                 : 'all 0.3s ease-out',
 
-        }} className='absolute z-6 sm:fixed top-15 sm:bottom-5 sm:top-auto right-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center sm:bg-bg_text rounded-md text-secondary hover:text-opposite-fg border-border hover:border-opposite-fg hover:bg-opposite-bg sm:border cursor-pointer' aria-label="Toggle Theme">{isDark ? <SunIcon /> : <MoonIcon />}</button>;
+        }} className='absolute z-6 sm:fixed top-15 sm:bottom-5 sm:top-auto right-2 w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center sm:bg-bg_text rounded-md text-secondary hover:text-opposite-fg border-border hover:border-opposite-fg hover:bg-opposite-bg sm:border cursor-pointer' title="Toggle Theme" aria-label="Toggle Theme">{isDark ? <SunIcon /> : <MoonIcon />}</button>;
 }
 
 

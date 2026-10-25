@@ -15,3 +15,17 @@
 @utility animate-upload{
     animation: upload 1s infinite ease-in-out;
 }
+
+@keyframes primary{
+    0%{ 
+        color: var(--foreground);
+    } 
+    50%{
+        
+        color: var(--primary);         
+    } 
+}
+
+@utility animate-primary{
+    animation: primary 2s infinite ease-in-out;
+}
